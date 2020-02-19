@@ -9,7 +9,7 @@ let suelo;
 let disparo;
 let vida = 4;
 let numeroDisparos=0;
-let nivel=0;
+let nivel=-1;
 let key=false;
 
 //POSICIONES
@@ -548,13 +548,6 @@ function moverPalanca(){
         $("#puente").css("background-image", "url(images/terrenos/puente.png)");
         $("#puente").removeClass("suelo");
     }
-    else
-    {
-        $("#palanca").css("background-image", "url(images/obstaculos/NIVEL1/palancaRoja.png)");
-        $("#puente").css("background-image", "");
-        $("#puente").addClass("suelo");
-        palancaPulsada=false;
-    }    
 }
 
 //CONSIGUE LA ESTRELLA
