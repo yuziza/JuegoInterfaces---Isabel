@@ -368,121 +368,44 @@ moverAbajo() {
         this.abajo = this.arriba + this.altura;
     }
 
-    colisionaPorAbajo(tipo) {
+    colisionaPorAbajo() {
         let colisiona = false;
-        if (tipo == "terreno") {
-            let terrenos = getTerrenos();
-            terrenos.forEach(val => {
-                if (this.abajo + 10 > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
-                    colisiona = true;
-                }
-            });
+        let objetos = getObjetos();
+        objetos.forEach(val => {
+         if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+            colisiona = true;
         }
-        if (tipo == "mounstruo") {
-            let mounstruos = getMonstruos();
-            mounstruos.forEach(val => {
-             if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+    });
+        return colisiona;
+    }
+    colisionaPorArriba() {
+        let colisiona = false;
+        let objetos = getObjetos();
+        objetos.forEach(val => {
+            if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
                 colisiona = true;
             }
         });
-        }
-        if (tipo == "objeto") {
-            let objetos = getObjetos();
-            objetos.forEach(val => {
-             if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+        return colisiona;
+    }
+    colisionaPorDerecha() {
+        let colisiona = false;
+        let objetos = getObjetos();
+        objetos.forEach(val => {
+            if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
                 colisiona = true;
             }
         });
-        }
         return colisiona;
     }
-    colisionaPorArriba(tipo) {
+    colisionaPorIzquierda() {
         let colisiona = false;
-        if (tipo == "terreno") {
-            let terrenos = getTerrenos();
-            terrenos.forEach(val => {
-                if (this.abajo > val.arriba && this.arriba - 10 < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
-                    colisiona = true;
-                }
-            });
-        }
-
-        if (tipo == "mounstruo") {
-            let mounstruos = getMonstruos();
-            mounstruos.forEach(val => {
-                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
-                    colisiona = true;
-                }
-            });
-        }
-        if (tipo == "objeto") {
-            let objetos = getObjetos();
-            objetos.forEach(val => {
-                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
-                    colisiona = true;
-                    if(vida<4)
-                        val.capa.remove();
-                }
-            });
-        }
-        return colisiona;
-    }
-    colisionaPorDerecha(tipo) {
-        let colisiona = false;
-        if (tipo == "terreno") {
-            let terrenos = getTerrenos();
-            terrenos.forEach(val => {
-                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha + 10 > val.izquierda && this.izquierda < val.derecha) {
-                    colisiona = true;
-                }
-            });
-        }
-        if (tipo == "mounstruo") {
-            let mounstruos = getMonstruos();
-            mounstruos.forEach(val => {
-                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
-                    colisiona = true;
-                }
-            });
-        }
-        if (tipo == "objeto") {
-            let objetos = getObjetos();
-            objetos.forEach(val => {
-                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
-                    colisiona = true;
-                    if(vida<4)
-                        val.capa.remove();
-                }
-            });
-        }
-        return colisiona;
-    }
-    colisionaPorIzquierda(tipo) {
-        let colisiona = false;
-        if (tipo == "terreno") {
-            let terrenos = getTerrenos();
-            terrenos.forEach(val => {
-                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda - 10 < val.derecha) {
-                    colisiona = true;
-                }
-            });
-        }
-        if (tipo == "mounstruo") {
-            let mounstruos = getMonstruos();
-            mounstruos.forEach(val => {
-                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
-                    colisiona = true;
-                }
-            });
-        }
-        if (tipo == "objeto") {
-            let objetos = getObjetos();
-            objetos.forEach(val => {
-                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
-                    colisiona = true;
-                }
-            });
-        }
+        let objetos = getObjetos();
+        objetos.forEach(val => {
+            if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+                colisiona = true;
+            }
+        });
         return colisiona;
     }
 }

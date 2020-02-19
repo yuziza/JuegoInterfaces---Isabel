@@ -586,6 +586,49 @@ function consigueLlave(){
     setTimeout(function() {$('#mensaje').css("display", "none")}, 2000);
 }
 
+
+//NOS DEVUELVE UN ARRAY DE TODOS LOS OBJETOS
+function getObjetos() {
+    let objetos = [];
+    $(".suelo").each((i,val) => {
+        let objeto = new Objeto($(val));
+        objetos.push(objeto);
+    });
+    $("#palanca").each((i,val) => {
+        let objeto = new Objeto($(val));
+        objetos.push(objeto);
+    });
+    $("#estrella").each((i,val) => {
+        let objeto = new Objeto($(val));
+        objetos.push(objeto);
+    });
+    $(".arma").each((i,val) => {
+        let objeto = new Objeto($(val));
+        objetos.push(objeto);
+    });
+    $(".corazon").each((i,val) => {
+        let objeto = new Objeto($(val));
+        objetos.push(objeto);
+    });
+    $(".llave").each((i,val) => {
+        let objeto = new Objeto($(val));
+        objetos.push(objeto);
+    });
+    $("#puertaEspecialNVL0").each((i,val) => {
+        let objeto = new Objeto($(val));
+        objetos.push(objeto);
+    });
+    $("#puertaNV0").each((i,val) => {
+        let objeto = new Objeto($(val));
+        objetos.push(objeto);
+    });
+    $(".mounstruo").each((i,val) => {
+        let objeto = new Objeto($(val));
+        objetos.push(objeto);
+    });
+    return objetos;
+}
+
 //NOS DEVUELVE UN ARRAY DE TODAS LAS PAREDES Y OBSTACULOS FIJOS EN PANTALLA
 function getTerrenos() {
     let terrenos = [];
