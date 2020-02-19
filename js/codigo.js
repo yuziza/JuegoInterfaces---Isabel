@@ -109,7 +109,7 @@ function container()
     if(nivel==1)
     {
         enemigosLVL=2;
-        seconds = 10;
+        seconds = 60;
         puntuacionAlEmpezarNVL = puntuacion;
         ultimoNVLJugado = 1;
         velocidadMobs = 900;
