@@ -1,5 +1,9 @@
 "user strict";
 let personaje;
+let mounstruo1;
+let mounstruo2;
+let mounstruo3;
+let mounstruo4;
 let sexo;
 let suelo;
 let disparo;
@@ -76,7 +80,7 @@ function container()
         $(document).prop('title', 'NIVEL 0');
         $("#container").html("<div id='vidas'> <img id='corazon1'> <img id='corazon2'> <img id='corazon3'> <img id='corazon4'> <img id='espada'> <img id='llave'> </div> <div id='nivel'>NIVEL</div> <div id='puntuacion'>PUNTOS: 0</div> <div id='misiones'> <center><h3>MISIONES</h3></center> <ul> <li id='misionArriba'>Muevete hacia arriba con la tecla ARRIBA</li> <li id='misionAbajo'>Muevete hacia abajo con la tecla ABAJO</li> <li id='misionIzq'>Muevete hacia la izquierda con la tecla IZQUIERDA</li> <li id='misionDer'>Muevete hacia la derecha con la tecla DERECHA</li> <li id='misionArma'>Encuentra el arma de hielo</li> <li id='misionDisparo'>Dispara una bola de hielo a un enemigo con la tecla ESPACIO</li> <li id='misionLlave'>Encuentra la llave</li></ul> </div> <div id='interfaz'> <!-- PAREDES QUE DELIMITAN LA PANTALLA--> <div id='paredHorizontal' class='suelo' style='width: 100%;'></div> <div id='paredHorizontal' class='suelo' style='width: 100%; bottom: 0em;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px; right: 0px;'></div> <!--PAREDES EXTRA--> <div id='paredVerticalRepeat' class='suelo' style='height: 200px; top:30px; left: 649px; z-index: 9;'></div> <div id='paredHorizontal' class='suelo' style='width: 250px; top:200px; left: 580px;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 200px; top:30px; left: 349px; z-index: 9;'></div> <div id='paredHorizontal' class='suelo' style='width: 100px; top:200px; left: 37px; z-index: 9'></div> <div id='paredHorizontal' class='suelo' style='width: 185px; top:200px; left: 271px;'></div> <!--OBJETOS OBSTACULOS--> <!--CELDA DERECHA--> <div id='puertaCarcel' class='suelo' style='top:200px; left: 828px; z-index: 9;'></div> <div id='paredHorizontal' class='suelo' style='width: 250px; top:200px; left: 580px;'></div> <div id='literaHorizontal' class='suelo' style='top:30px; left: 690px;'></div> <div id='barrilRoto' class='suelo' style='top:80px; left: 800px;'></div> <div id='literaHorizontal' class='suelo' style='top:30px; left: 863px;'></div> <div id='cerdito' class='suelo' style='top:220px; left: 867px;'></div> <!--CELDA EN MEDIO--> <div id='puertaEspecialNVL0' class='suelo' style='top:200px; left: 450px;'></div> <!--CELDA IZQUIERDA--> <div id='puertaCarcel' class='suelo' style='top:200px; left: 80px;'></div> <div id='barril' class='suelo' style='top:80px; left: 300px;'></div> <div id='barril' class='suelo' style='top:80px; left: 260px;'></div> <div id='barril' class='suelo' style='top:80px; left: 175px;'></div> <div id='barril' class='suelo' style='top:80px; left: 135px;'></div> <div id='bolaCadena' style='top:80px; left: 45px;'></div> <!--ESPACIO GRANDE--> <div id='sillaMesa' class='suelo' style='width: 288px; top:400px; left: 500px;'></div> <div id='sacos' class='suelo' style='height: 360px; top:250px; left: 36px; z-index: 10'></div> <div id='sacos' class='suelo' style='top:250px; left: 83px; z-index: 10'></div> <div id='sacos' class='suelo' style='top:250px; left: 130px; z-index: 10'></div> <div id='sacos' class='suelo' style='height: 188px; top:300px; left: 160px; z-index: 10'></div> <div id='mounstruoMuerte' class='mounstruo' style='top:400px; left: 85px;'></div> <!--SALIDA--> <div id='puertaNV0' class='exit' style='top:0px; left: 500px;'></div> <!--COFRES--> <div id='cofreArma' class='arma' style='top:80px; left: 225px;'></div> <div id='cofreLlave' class='llave' style='top:350px; left: 110px;'></div> </div> <div id='personaje' style='top:250px; left: 550px;'></div> <div id='muletas'> <img id='botonArriba' src='images/interfaz/flechaArriba.png'><img id='botonAbajo' src='images/interfaz/flechaAbajo.png'><img id='botonDerecha' src='images/interfaz/flechaDerecha.png'><img id='botonIzquierda' src='images/interfaz/flechaIzquierda.png'><img id='botonSpace' src='images/interfaz/space.png'> </div> <div id='tiempo'> </div> <div id='mensaje'></div> <div id='moneda'></div>");
         $("#personaje").css("top", "250px");
-        $("#personaje").css("left", "550px");
+        $("#personaje").css("left", "550px"); 
     }
     if(nivel==1)
     {
@@ -100,32 +104,41 @@ function container()
         $("#personaje").css("left", "980px");
         $("#cofreLlave").css("background-image", "url(images/obstaculos/cofreLlaveCerradoDerecha.png)");
         $("#cofreLlave").css("width","29px");
-        $("#misionDisparo").css("color","white");
+        $("#misionDisparo").css("color","white");     
     }
 
     if(nivel!=-1)
     {
-        personaje = new Personaje($('#personaje'));
+        personaje = new Personaje($('#personaje')); 
         clearInterval(countdownTimer);
         countdownTimer = setInterval(secondPassed, 1000);
         $("#puntuacion").html("PUNTOS: "+puntuacion);
         $("#nivel").html("NIVEL "+nivel);
         comprobarVida();
+        crearMobs();
 
         if(key!=true)
         {
             $(document).keydown(function(e) {
-            t = e.which;
-            console.log("funcion keydown");
-            mueve(t);
-            });
+                t = e.which;
+                mueve(t);
+            //PRUEBA MOUNSTRUOS
+            console.log("MOVIMIENTO MOB1");
+            movimientoMobs(mounstruo1);
+            if(nivel==1)
+            {
+                console.log("MOVIMIENTO MOB2");
+                movimientoMobs(mounstruo2);
+            }
+            //FINPRUEBAMONS
+        });
             $(document).keyup(function(e) {
-            personaje.detiene();
-            $("#botonSpace").attr("src","images/interfaz/space.png");
-            $("#botonArriba").attr("src","images/interfaz/flechaArriba.png");
-            $("#botonDerecha").attr("src","images/interfaz/flechaDerecha.png");
-            $("#botonAbajo").attr("src","images/interfaz/flechaAbajo.png");
-            $("#botonIzquierda").attr("src","images/interfaz/flechaIzquierda.png");
+                personaje.detiene();
+                $("#botonSpace").attr("src","images/interfaz/space.png");
+                $("#botonArriba").attr("src","images/interfaz/flechaArriba.png");
+                $("#botonDerecha").attr("src","images/interfaz/flechaDerecha.png");
+                $("#botonAbajo").attr("src","images/interfaz/flechaAbajo.png");
+                $("#botonIzquierda").attr("src","images/interfaz/flechaIzquierda.png");
             });
             key=true;
         }
@@ -631,10 +644,6 @@ function getObjetos() {
         let objeto = new Objeto($(val));
         objetos.push(objeto);
     });
-    $(".mounstruo").each((i,val) => {
-        let objeto = new Objeto($(val));
-        objetos.push(objeto);
-    });
     return objetos;
 }
 
@@ -770,3 +779,52 @@ if (seconds == 0) {
     seconds--; 
 } 
 } 
+
+function crearMobs(){
+        console.log("ENTRA EN CREAR MOBS");
+        let mounstruos = getMonstruos();
+        console.log("ENEMIGOS"+enemigosLVL);
+        console.log(mounstruos);
+        for(let i=0;i<enemigosLVL;i++)
+        {
+            if(i==0)
+            {
+                console.log("CREA MOB 1 :"+JSON.stringify(mounstruos[i]));
+                mounstruo1 = mounstruos[i];
+                console.log("MOUNSTRUO 1 :"+mounstruo1);
+            }
+            if(i==1)
+            {
+                console.log("CREA MOB 2 :"+JSON.stringify(mounstruos[i]));
+                mounstruo2 = mounstruos[i];
+                console.log("MOUNSTRUO 2 :"+mounstruo2);
+            }
+        }
+    }  
+
+function movimientoMobs(mounstruo){
+    var direccion = Math.round(Math.random() * (4 - 1) + 1);
+    switch(direccion)
+    {
+        case 1:
+        console.log("colisionaPorArriba:"+mounstruo.colisionaPorArriba());
+        if(!mounstruo.colisionaPorArriba())
+            mounstruo.moverArriba();
+        break;
+        case 2:
+        console.log("colisionaPorAbajo:"+mounstruo.colisionaPorAbajo());
+        if(!mounstruo.colisionaPorAbajo())
+            mounstruo.moverAbajo();
+        break;
+        case 3:
+        console.log("colisionaPorDerecha:"+mounstruo.colisionaPorDerecha());
+        if(!mounstruo.colisionaPorDerecha())
+            mounstruo.moverDerecha();
+        break;
+        case 4:
+        console.log("colisionaPorIzquierda:"+mounstruo.colisionaPorIzquierda());
+        if(!mounstruo.colisionaPorIzquierda())
+            mounstruo.moverIzquierda();
+        break;
+    }
+}
