@@ -116,22 +116,22 @@ function container()
         $("#nivel").html("NIVEL "+nivel);
         comprobarVida();
         crearMobs();
-
+        setInterval(()=>movimientoMobs(mounstruo1),500);
         if(key!=true)
         {
-            $(document).keydown(function(e) {
-                t = e.which;
-                mueve(t);
-            //PRUEBA MOUNSTRUOS
-            console.log("MOVIMIENTO MOB1");
-            movimientoMobs(mounstruo1);
-            if(nivel==1)
-            {
-                console.log("MOVIMIENTO MOB2");
-                movimientoMobs(mounstruo2);
-            }
-            //FINPRUEBAMONS
-        });
+            // $(document).keydown(function(e) {
+            //     t = e.which;
+            //     mueve(t);
+            // //PRUEBA MOUNSTRUOS
+            // console.log("MOVIMIENTO MOB1");
+            // movimientoMobs(mounstruo1);
+            // if(nivel==1)
+            // {
+            //     console.log("MOVIMIENTO MOB2");
+            //     movimientoMobs(mounstruo2);
+            // }
+            // //FINPRUEBAMONS
+        // });
             $(document).keyup(function(e) {
                 personaje.detiene();
                 $("#botonSpace").attr("src","images/interfaz/space.png");
@@ -803,7 +803,7 @@ function crearMobs(){
     }  
 
 function movimientoMobs(mounstruo){
-    var direccion = Math.round(Math.random() * (4 - 1) + 1);
+    var direccion = Math.round(Math.random() * 4);
     switch(direccion)
     {
         case 1:
