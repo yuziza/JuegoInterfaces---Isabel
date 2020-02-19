@@ -4,7 +4,7 @@ let mounstruo1;
 let mounstruo2;
 let mounstruo3;
 let mounstruo4;
-let sexo;
+let sexo = 0;
 let suelo;
 let disparo;
 let vida = 4;
@@ -70,7 +70,7 @@ function container()
     if(nivel==-1)
     {
         $(document).prop('title', 'PRACTICA-5');
-        $("#container").html("<center><h1>BIENVENIDO A PRÁCTICA-5</h1><h2>ESTE JUEGO HA SIDO CREADO POR ISABEL FERNÁNDEZ</h2><h3>ELIGE TU PERSONAJE</h3><form id='frmElegido'><table><tr><td><img src='images/personaje/chicaAbajo.gif'></td><td><img src='images/personaje/chicaAbajo.gif'></td></tr><tr><td><input type='radio' name='elegido' id='chico' value='CHICO' checked></td><td><input type='radio' name='elegido' id='chica' value='CHICA'></td></tr></table><br><br><input class='botonInsertCoin' type='button' id='botonEleccion' value='INSERT COIN'></form></center>");
+        $("#container").html("<center><h1>BIENVENIDO A PRÁCTICA-5</h1><h2>ESTE JUEGO HA SIDO CREADO POR ISABEL FERNÁNDEZ</h2><h3>ELIGE TU PERSONAJE</h3><form id='frmElegido'><table><tr><td><img src='images/personaje/chicoAvatar.png'></td><td><img src='images/personaje/chicaAvatar.png'></td></tr><tr><td><input class='eleg' type='radio' name='elegido' id='chico' value='CHICO' checked></td><td><input class='eleg' type='radio' name='elegido' id='chica' value='CHICA'></td></tr></table><br><br><input class='botonInsertCoin' type='button' id='botonEleccion' value='INSERT COIN'></form></center>");
     }
     if(nivel==0)
     {
@@ -114,6 +114,12 @@ function container()
     if(nivel!=-1)
     {
         personaje = new Personaje($('#personaje')); 
+        if(sexo==0)
+        { 
+            $('#personaje').css("background-image","url(images/personaje/chicoAbajo.png)");
+            $('#personaje').css("width","35px");
+            $('#personaje').css("height","48px");
+        }
         
         $("#puntuacion").html("PUNTOS: "+puntuacion);
         $("#nivel").html("NIVEL "+nivel);
@@ -129,7 +135,7 @@ function container()
             $(document).keydown(function(e) {
                 t = e.which;
                 mueve(t);
-        });
+            });
             $(document).keyup(function(e) {
                 personaje.detiene();
                 $("#botonSpace").attr("src","images/interfaz/space.png");
@@ -772,33 +778,33 @@ if (seconds == 0) {
 } 
 
 function crearMobs(){
-        console.log("ENTRA EN CREAR MOBS");
-        let mounstruos = getMonstruos();
-        console.log("ENEMIGOS"+enemigosLVL);
-        console.log(mounstruos);
-        for(let i=0;i<enemigosLVL;i++)
+    console.log("ENTRA EN CREAR MOBS");
+    let mounstruos = getMonstruos();
+    console.log("ENEMIGOS"+enemigosLVL);
+    console.log(mounstruos);
+    for(let i=0;i<enemigosLVL;i++)
+    {
+        if(i==0)
         {
-            if(i==0)
-            {
-                console.log("CREA MOB 1 :"+JSON.stringify(mounstruos[i]));
-                mounstruo1 = mounstruos[i];
-                console.log("MOUNSTRUO 1 :"+mounstruo1);
-            }
-            if(i==1)
-            {
-                console.log("CREA MOB 2 :"+JSON.stringify(mounstruos[i]));
-                mounstruo2 = mounstruos[i];
-                console.log("MOUNSTRUO 2 :"+mounstruo2);
-            }
+            console.log("CREA MOB 1 :"+JSON.stringify(mounstruos[i]));
+            mounstruo1 = mounstruos[i];
+            console.log("MOUNSTRUO 1 :"+mounstruo1);
         }
-    }  
+        if(i==1)
+        {
+            console.log("CREA MOB 2 :"+JSON.stringify(mounstruos[i]));
+            mounstruo2 = mounstruos[i];
+            console.log("MOUNSTRUO 2 :"+mounstruo2);
+        }
+    }
+}  
 
 function playMobs(){
-            movimientoMobs(mounstruo1);
-            if(nivel==1)
-            {
-            movimientoMobs(mounstruo2);
-            }
+    movimientoMobs(mounstruo1);
+    if(nivel==1)
+    {
+        movimientoMobs(mounstruo2);
+    }
 }
 
 function movimientoMobs(mounstruo){

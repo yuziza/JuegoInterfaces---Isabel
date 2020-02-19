@@ -28,6 +28,15 @@ h3{
 	font-size: 60px;
 }
 
+tr, td{
+	text-align: center;
+}
+
+.eleg{
+	width: 20px;
+	height: 20px;
+}
+
 #nivel0{
 	display: none;
 }
@@ -135,8 +144,8 @@ h3{
 /*================= PERSONAJE PRINCIPAL =================*/
 
 #personaje {
-	height: 42px;
-	width: 25px;
+	height: 45px;
+	width: 29px;
 	background-image: url('../images/personaje/chicaAbajo.png');
 	display: block;
 	position: absolute;

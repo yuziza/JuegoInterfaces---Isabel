@@ -15,16 +15,44 @@ detiene(){
     switch(ultimaPosicion)
     {
         case "arriba":
-        $('#personaje').css("background-image", "url(images/personaje/chicaArriba.png)");
+        if(sexo==0)
+        {
+            $('#personaje').css("background-image", "url(images/personaje/chicoArriba.png)");
+        }
+        else
+        {
+            $('#personaje').css("background-image", "url(images/personaje/chicaArriba.png)");
+        }
         break;
         case "derecha":
-        $('#personaje').css("background-image", "url(images/personaje/chicaDerecha.png)");
+        if(sexo==0)
+        {
+            $('#personaje').css("background-image", "url(images/personaje/chicoDerecha.png)");   
+        }
+        else
+        {
+            $('#personaje').css("background-image", "url(images/personaje/chicaDerecha.png)");
+        }
         break;
         case "abajo":
-        $('#personaje').css("background-image", "url(images/personaje/chicaAbajo.png)");
+        if(sexo==0)
+        {
+            $('#personaje').css("background-image", "url(images/personaje/chicoAbajo.png)");
+        }
+        else
+        {
+            $('#personaje').css("background-image", "url(images/personaje/chicaAbajo.png)");
+        }
         break;
         case "izquierda":
-        $('#personaje').css("background-image", "url(images/personaje/chicaIzquierda.png)");
+        if(sexo==0)
+        {
+            $('#personaje').css("background-image", "url(images/personaje/chicoIzquierda.png)");
+        }
+        else
+        {
+            $('#personaje').css("background-image", "url(images/personaje/chicaIzquierda.png)");
+        }
         break;
     }
 }
@@ -213,9 +241,19 @@ colisionaPorIzquierda(tipo) {
 //FUNCIONES PARA QUE EL PERSONAJE PRINCIPAL SE MUEVA Y SE PONGA COMO GIF
 
 moverArriba(tipo) {
+    if(sexo==0)
+    {
+    this.capa.css("background-image", "url(images/personaje/chicoArriba.gif)");
+    this.capa.css("width", "35px");
+    this.capa.css("height", "47px");
+    }
+    else
+    {
     this.capa.css("background-image", "url(images/personaje/chicaArriba.gif)");
-    this.capa.css("width", "25px");
-    this.capa.css("height", "42px");
+    this.capa.css("width", "29px");
+    this.capa.css("height", "45px");
+    }
+
     if(tipo==1)
     {
         this.capa.animate({ top: this.arriba -= 5 }, { duration: 1, queue: false });
@@ -227,9 +265,19 @@ moverArriba(tipo) {
     this.actualizaCoordenadas();
 }
 moverAbajo(tipo) {
+    if(sexo==0)
+    {
+    this.capa.css("background-image", "url(images/personaje/chicoAbajo.gif)");
+    this.capa.css("width", "35px");
+    this.capa.css("height", "48px");
+    }
+    else
+    {
     this.capa.css("background-image", "url(images/personaje/chicaAbajo.gif)");
-    this.capa.css("width", "25px");
-    this.capa.css("height", "42px");
+    this.capa.css("width", "29px");
+    this.capa.css("height", "45px");
+    }
+
     if(tipo==1)
     {
         this.capa.animate({ top: this.arriba += 5}, { duration: 1, queue: false });
@@ -241,9 +289,19 @@ moverAbajo(tipo) {
     this.actualizaCoordenadas();
 }
 moverDerecha(tipo) {
+    if(sexo==0)
+    {
+    this.capa.css("background-image", "url(images/personaje/chicoDerecha.gif)");
+    this.capa.css("width", "33px");
+    this.capa.css("height", "48px");
+    }
+    else
+    {
     this.capa.css("background-image", "url(images/personaje/chicaDerecha.gif)");
-    this.capa.css("width", "23px");
-    this.capa.css("height", "43px");
+    this.capa.css("width", "30px");
+    this.capa.css("height", "45px");
+    }
+
     if(tipo==1)
     {
         this.capa.animate({ left: this.izquierda += 5 }, { duration: 1, queue: false });
@@ -255,9 +313,19 @@ moverDerecha(tipo) {
     this.actualizaCoordenadas();
 }
 moverIzquierda(tipo) {
+    if(sexo==0)
+    {
+    this.capa.css("background-image", "url(images/personaje/chicoIzquierda.gif)");
+    this.capa.css("width", "33px");
+    this.capa.css("height", "48px");
+    }
+    else
+    {
     this.capa.css("background-image", "url(images/personaje/chicaIzquierda.gif)");
-    this.capa.css("width", "23px");
-    this.capa.css("height", "43px");
+    this.capa.css("width", "30px");
+    this.capa.css("height", "45px");
+    }
+    
     if(tipo==1)
     {
         this.capa.animate({ left: this.izquierda -= 5 }, { duration: 1, queue: false });
