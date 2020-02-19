@@ -9,7 +9,7 @@ let suelo;
 let disparo;
 let vida = 4;
 let numeroDisparos=0;
-let nivel=1;
+let nivel=0;
 let key=false;
 
 //POSICIONES
@@ -30,6 +30,7 @@ let enemigosLVL=0;
 let seconds = 3600; //número de segundos a contar
 let countdownTimer;
 let countdownMobs;
+let velocidadMobs;
 
 //MISIONES
 //LVL 0
@@ -76,10 +77,11 @@ function container()
         enemigosLVL=1;
         seconds = 180;
         puntuacionAlEmpezarNVL = 0;
+        velocidadMobs = 1000;
         arma = false;
         llave = false;
         $(document).prop('title', 'NIVEL 0');
-        $("#container").html("<div id='vidas'> <img id='corazon1'> <img id='corazon2'> <img id='corazon3'> <img id='corazon4'> <img id='espada'> <img id='llave'> </div> <div id='nivel'>NIVEL</div> <div id='puntuacion'>PUNTOS: 0</div> <div id='misiones'> <center><h3>MISIONES</h3></center> <ul> <li id='misionArriba'>Muevete hacia arriba con la tecla ARRIBA</li> <li id='misionAbajo'>Muevete hacia abajo con la tecla ABAJO</li> <li id='misionIzq'>Muevete hacia la izquierda con la tecla IZQUIERDA</li> <li id='misionDer'>Muevete hacia la derecha con la tecla DERECHA</li> <li id='misionArma'>Encuentra el arma de hielo</li> <li id='misionDisparo'>Dispara una bola de hielo a un enemigo con la tecla ESPACIO</li> <li id='misionLlave'>Encuentra la llave</li></ul> </div> <div id='interfaz'> <!-- PAREDES QUE DELIMITAN LA PANTALLA--> <div id='paredHorizontal' class='suelo' style='width: 100%;'></div> <div id='paredHorizontal' class='suelo' style='width: 100%; bottom: 0em;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px; right: 0px;'></div> <!--PAREDES EXTRA--> <div id='paredVerticalRepeat' class='suelo' style='height: 200px; top:30px; left: 649px; z-index: 9;'></div> <div id='paredHorizontal' class='suelo' style='width: 250px; top:200px; left: 580px;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 200px; top:30px; left: 349px; z-index: 9;'></div> <div id='paredHorizontal' class='suelo' style='width: 100px; top:200px; left: 37px; z-index: 9'></div> <div id='paredHorizontal' class='suelo' style='width: 185px; top:200px; left: 271px;'></div> <!--OBJETOS OBSTACULOS--> <!--CELDA DERECHA--> <div id='puertaCarcel' class='suelo' style='top:200px; left: 828px; z-index: 9;'></div> <div id='paredHorizontal' class='suelo' style='width: 250px; top:200px; left: 580px;'></div> <div id='literaHorizontal' class='suelo' style='top:30px; left: 690px;'></div> <div id='barrilRoto' class='suelo' style='top:80px; left: 800px;'></div> <div id='literaHorizontal' class='suelo' style='top:30px; left: 863px;'></div> <div id='cerdito' class='suelo' style='top:220px; left: 867px;'></div> <!--CELDA EN MEDIO--> <div id='puertaEspecialNVL0' class='suelo' style='top:200px; left: 450px;'></div> <!--CELDA IZQUIERDA--> <div id='puertaCarcel' class='suelo' style='top:200px; left: 80px;'></div> <div id='barril' class='suelo' style='top:80px; left: 300px;'></div> <div id='barril' class='suelo' style='top:80px; left: 260px;'></div> <div id='barril' class='suelo' style='top:80px; left: 175px;'></div> <div id='barril' class='suelo' style='top:80px; left: 135px;'></div> <div id='bolaCadena' style='top:80px; left: 45px;'></div> <!--ESPACIO GRANDE--> <div id='sillaMesa' class='suelo' style='width: 288px; top:400px; left: 500px;'></div> <div id='sacos' class='suelo' style='height: 360px; top:250px; left: 36px; z-index: 10'></div> <div id='sacos' class='suelo' style='top:250px; left: 83px; z-index: 10'></div> <div id='sacos' class='suelo' style='top:250px; left: 130px; z-index: 10'></div> <div id='sacos' class='suelo' style='height: 188px; top:300px; left: 160px; z-index: 10'></div> <div id='mounstruoMuerte' class='mounstruo' style='top:400px; left: 85px;'></div> <!--SALIDA--> <div id='puertaNV0' class='exit' style='top:0px; left: 500px;'></div> <!--COFRES--> <div id='cofreArma' class='arma' style='top:80px; left: 225px;'></div> <div id='cofreLlave' class='llave' style='top:350px; left: 110px;'></div> </div> <div id='personaje' style='top:250px; left: 550px;'></div> <div id='muletas'> <img id='botonArriba' src='images/interfaz/flechaArriba.png'><img id='botonAbajo' src='images/interfaz/flechaAbajo.png'><img id='botonDerecha' src='images/interfaz/flechaDerecha.png'><img id='botonIzquierda' src='images/interfaz/flechaIzquierda.png'><img id='botonSpace' src='images/interfaz/space.png'> </div> <div id='tiempo'> </div> <div id='mensaje'></div> <div id='moneda'></div>");
+        $("#container").html("<div id='vidas'> <img id='corazon1'> <img id='corazon2'> <img id='corazon3'> <img id='corazon4'> <img id='espada'> <img id='llave'> </div> <div id='nivel'>NIVEL</div> <div id='puntuacion'>PUNTOS: 0</div> <div id='misiones'> <center><h3>MISIONES</h3></center> <ul> <li id='misionArriba'>Muevete hacia arriba con la tecla ARRIBA</li> <li id='misionAbajo'>Muevete hacia abajo con la tecla ABAJO</li> <li id='misionIzq'>Muevete hacia la izquierda con la tecla IZQUIERDA</li> <li id='misionDer'>Muevete hacia la derecha con la tecla DERECHA</li> <li id='misionArma'>Encuentra el arma de hielo</li> <li id='misionDisparo'>Dispara una bola de hielo a un enemigo con la tecla ESPACIO</li> <li id='misionLlave'>Encuentra la llave</li></ul> </div> <div id='interfaz'> <!-- PAREDES QUE DELIMITAN LA PANTALLA--> <div id='paredHorizontal' class='suelo' style='width: 100%;'></div> <div id='paredHorizontal' class='suelo' style='width: 100%; bottom: 0em;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px; right: 0px;'></div> <!--PAREDES EXTRA--> <div id='paredVerticalRepeat' class='suelo' style='height: 200px; top:30px; left: 649px; z-index: 9;'></div> <div id='paredHorizontal' class='suelo' style='width: 250px; top:200px; left: 580px;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 200px; top:30px; left: 349px; z-index: 9;'></div> <div id='paredHorizontal' class='suelo' style='width: 100px; top:200px; left: 37px; z-index: 9'></div> <div id='paredHorizontal' class='suelo' style='width: 185px; top:200px; left: 271px;'></div> <!--OBJETOS OBSTACULOS--> <!--CELDA DERECHA--> <div id='puertaCarcel' class='suelo' style='top:200px; left: 828px; z-index: 9;'></div> <div id='paredHorizontal' class='suelo' style='width: 250px; top:200px; left: 580px;'></div> <div id='literaHorizontal' class='suelo' style='top:30px; left: 690px;'></div> <div id='barrilRoto' class='suelo' style='top:80px; left: 800px;'></div> <div id='literaHorizontal' class='suelo' style='top:30px; left: 863px;'></div> <div id='cerdito' class='suelo' style='top:220px; left: 867px;'></div> <!--CELDA EN MEDIO--> <div id='puertaEspecialNVL0' class='suelo' style='top:200px; left: 450px;'></div> <!--CELDA IZQUIERDA--> <div id='puertaCarcel' class='suelo' style='top:200px; left: 80px;'></div> <div id='barril' class='suelo' style='top:80px; left: 300px;'></div> <div id='barril' class='suelo' style='top:80px; left: 260px;'></div> <div id='barril' class='suelo' style='top:80px; left: 175px;'></div> <div id='barril' class='suelo' style='top:80px; left: 135px;'></div> <div id='bolaCadena' style='top:80px; left: 45px;'></div> <!--ESPACIO GRANDE--> <div id='sillaMesa' class='suelo' style='width: 288px; top:400px; left: 500px;'></div> <div id='sacos' class='suelo' style='height: 360px; top:250px; left: 36px; z-index: 10'></div> <div id='sacos' class='suelo' style='top:250px; left: 83px; z-index: 10'></div> <div id='sacos' class='suelo' style='top:250px; left: 130px; z-index: 10'></div> <div id='sacos' class='suelo' style='height: 188px; top:300px; left: 160px; z-index: 10'></div> <!--SALIDA--> <div id='puertaNV0' class='exit' style='top:0px; left: 500px;'></div> <!--COFRES--> <div id='cofreArma' class='arma' style='top:80px; left: 225px;'></div> <div id='cofreLlave' class='llave' style='top:350px; left: 110px;'></div> </div> <div id='personaje' style='top:250px; left: 550px;'></div><div id='mounstruoMuerte' class='mounstruo' style='top:600px; left: 600px;'></div> <div id='muletas'> <img id='botonArriba' src='images/interfaz/flechaArriba.png'><img id='botonAbajo' src='images/interfaz/flechaAbajo.png'><img id='botonDerecha' src='images/interfaz/flechaDerecha.png'><img id='botonIzquierda' src='images/interfaz/flechaIzquierda.png'><img id='botonSpace' src='images/interfaz/space.png'> </div> <div id='tiempo'> </div> <div id='mensaje'></div> <div id='moneda'></div>");
         $("#personaje").css("top", "250px");
         $("#personaje").css("left", "550px"); 
     }
@@ -88,6 +90,7 @@ function container()
         enemigosLVL=2;
         seconds = 180;
         puntuacionAlEmpezarNVL = puntuacion;
+        velocidadMobs = 900;
         misionDisparo = false;
         misionLlave = false;
         arma=true;
@@ -113,7 +116,7 @@ function container()
         personaje = new Personaje($('#personaje')); 
         clearInterval(countdownTimer);
         countdownTimer = setInterval(secondPassed, 1000);
-        countdownMobs = setInterval(playMobs, 1000);
+        countdownMobs = setInterval(playMobs, velocidadMobs);
         $("#puntuacion").html("PUNTOS: "+puntuacion);
         $("#nivel").html("NIVEL "+nivel);
         comprobarVida();
@@ -810,7 +813,7 @@ function movimientoMobs(mounstruo){
         case 1:
         console.log("colisionaPorArriba:"+mounstruo.colisionaPorArriba());
         if(!mounstruo.colisionaPorArriba())
-            mounstruo.moverArriba();
+            {mounstruo.moverArriba();mounstruo.moverArriba();}
         else
             mounstruo.moverAbajo();
         break;
@@ -831,7 +834,7 @@ function movimientoMobs(mounstruo){
         case 4:
         console.log("colisionaPorIzquierda:"+mounstruo.colisionaPorIzquierda());
         if(!mounstruo.colisionaPorIzquierda())
-            mounstruo.moverIzquierda();
+            {mounstruo.moverIzquierda();mounstruo.moverIzquierda();}
         else
             mounstruo.moverDerecha();
         break;
