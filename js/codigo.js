@@ -67,6 +67,17 @@ $(document).ready(function() {
 
 function container()
 {
+    if(nivel==4)
+    {
+        $(document).prop('title', '¡ENHORABUENA!');
+        $("#container").html("");
+    }
+    if(nivel==-2)
+    {
+        $(document).prop('title', 'GAME OVER');
+        $("#container").html("");
+    }
+
     if(nivel==-1)
     {
         $(document).prop('title', 'PRACTICA-5');
@@ -108,6 +119,52 @@ function container()
         $("#personaje").css("left", "980px");
         $("#cofreLlave").css("background-image", "url(images/obstaculos/cofreLlaveCerradoDerecha.png)");
         $("#cofreLlave").css("width","29px");
+        $("#misionDisparo").css("color","white");     
+    }
+
+    if(nivel==2)
+    {
+        enemigosLVL=3;
+        seconds = 140;
+        puntuacionAlEmpezarNVL = puntuacion;
+        velocidadMobs = 800;
+        misionDisparo = false;
+        misionLlave = false;
+        arma=true;
+        llave = false;
+        exit = false;
+        $(document).prop('title', 'NIVEL 2');
+        $("#container").html("");
+        $("#interfaz").css("background-image", "url(images/terrenos/sueloLVL1.png)");
+        $('#espada').attr("src","images/interfaz/espada.png");
+        $("div#paredHorizontal").css("background-image", "url(images/pared/paredHorizontalLVL1.png)");
+        $("div#paredVerticalRepeat").css("background-image","url(images/pared/paredVerticalLVL1.png)");
+        $("div#paredVerticalRepeat").css("width","48px");
+        $("#personaje").css("top", "210px");
+        $("#personaje").css("left", "980px");
+        $("#misionDisparo").css("color","white");     
+    }
+
+    if(nivel==3)
+    {
+        enemigosLVL=3;
+        seconds = 120;
+        puntuacionAlEmpezarNVL = puntuacion;
+        velocidadMobs = 600;
+        misionDisparo = false;
+        misionLlave = false;
+        arma=true;
+        llave = false;
+        exit = false;
+        $(document).prop('title', 'NIVEL 3');
+        $("#container").html("");
+        $("#interfaz").css("background-image", "url(images/terrenos/sueloLVL1.png)");
+        $('#espada').attr("src","images/interfaz/espada.png");
+        $("div#paredHorizontal").css("background-image", "url(images/pared/paredHorizontalLVL1.png)");
+        $("div#paredVerticalRepeat").css("background-image","url(images/pared/paredVerticalLVL1.png)");
+        $("div#paredVerticalRepeat").css("width","48px");
+        $("#personaje").css("top", "210px");
+        $("#personaje").css("left", "980px");
         $("#misionDisparo").css("color","white");     
     }
 
@@ -530,8 +587,8 @@ function comprobarVida(){
         $('#corazon2').attr("src","images/interfaz/corazonvacio.png");
         $('#corazon3').attr("src","images/interfaz/corazonvacio.png");
         $('#corazon4').attr("src","images/interfaz/corazonvacio.png");
-        alert("GAME OVER");
-        location.reload();
+        nivel=-2;
+        container();
         break;
     }
 }
