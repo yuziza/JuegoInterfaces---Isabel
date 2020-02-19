@@ -6,6 +6,7 @@ let disparo;
 let vida = 4;
 let numeroDisparos=0;
 let nivel=-1;
+let key=false;
 
 //POSICIONES
 let ultimaPosicion = "";
@@ -104,23 +105,30 @@ function container()
 
     if(nivel!=-1)
     {
+        personaje = new Personaje($('#personaje'));
+        clearInterval(countdownTimer);
         countdownTimer = setInterval(secondPassed, 1000);
         $("#puntuacion").html("PUNTOS: "+puntuacion);
         $("#nivel").html("NIVEL "+nivel);
-        personaje = new Personaje($('#personaje'));
         comprobarVida();
-        $(document).keydown(function(e) {
+
+        if(key!=true)
+        {
+            $(document).keydown(function(e) {
             t = e.which;
+            console.log("funcion keydown");
             mueve(t);
-        });
-        $(document).keyup(function(e) {
+            });
+            $(document).keyup(function(e) {
             personaje.detiene();
             $("#botonSpace").attr("src","images/interfaz/space.png");
             $("#botonArriba").attr("src","images/interfaz/flechaArriba.png");
             $("#botonDerecha").attr("src","images/interfaz/flechaDerecha.png");
             $("#botonAbajo").attr("src","images/interfaz/flechaAbajo.png");
             $("#botonIzquierda").attr("src","images/interfaz/flechaIzquierda.png");
-        });
+            });
+            key=true;
+        }
     }
 }
 
