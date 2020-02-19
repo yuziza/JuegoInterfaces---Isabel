@@ -49,6 +49,9 @@ tr, td{
 	font-size: 100px;
 	padding: 10px 25px 25px 25px;
 }
+.botonInsertCoin:hover{
+	background-color: lightblue;
+}
 /*==================== INTERFAZ ==========================*/
 #interfaz{
 	width: 1000px;

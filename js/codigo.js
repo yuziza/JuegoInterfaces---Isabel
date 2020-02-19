@@ -24,6 +24,7 @@ let llave = false;
 let llaveAlEmpezarNVL;
 let exit = false;
 let puntuacionAlEmpezarNVL;
+let ultimoNVLJugado=-1;
 let enemigosLVL=0;
 
 //CONTADOR DEL TIEMPO
@@ -52,9 +53,9 @@ let misionSalir=false;
 
 $(document).ready(function() {
 
-    container();
-    $("#botonEleccion").click(function(){iniciar()});
-
+    container();   
+    $("#botonEleccion").click(function(){iniciar();});
+    console.log(ultimoNVLJugado);
     function iniciar(){
         if(document.getElementById("chico").checked)
             sexo=0;
@@ -75,7 +76,9 @@ function container()
     if(nivel==-2)
     {
         $(document).prop('title', 'GAME OVER');
-        $("#container").html("");
+        $("#container").html("<div id='container'> <h1>GAME OVER</h1> <h2>¿QUÉ QUIERES HACER?</h2> <input id='botonReload' class='botonInsertCoin' type='button' name='botonReload' value='VOLVER A INTENTAR'><br><br><input id='botonInicio' class='botonInsertCoin' type='button' name='botonInicio' value='IR AL INICIO'> </div>");
+        $("#botonReload").click(function(){nivel=ultimoNVLJugado; container();});
+        $("#botonInicio").click(function(){nivel=-1; container();}); 
     }
 
     if(nivel==-1)
@@ -86,8 +89,9 @@ function container()
     if(nivel==0)
     {
         enemigosLVL=1;
-        seconds = 180;
+        seconds = 60;
         puntuacionAlEmpezarNVL = 0;
+        ultimoNVLJugado = 0;
         velocidadMobs = 1000;
         arma = false;
         llave = false;
@@ -99,8 +103,9 @@ function container()
     if(nivel==1)
     {
         enemigosLVL=2;
-        seconds = 180;
+        seconds = 10;
         puntuacionAlEmpezarNVL = puntuacion;
+        ultimoNVLJugado = 1;
         velocidadMobs = 900;
         misionDisparo = false;
         misionLlave = false;
@@ -124,6 +129,7 @@ function container()
 
     if(nivel==2)
     {
+        ultimoNVLJugado = 2;
         enemigosLVL=3;
         seconds = 140;
         puntuacionAlEmpezarNVL = puntuacion;
@@ -147,6 +153,7 @@ function container()
 
     if(nivel==3)
     {
+        ultimoNVLJugado = 3;
         enemigosLVL=3;
         seconds = 120;
         puntuacionAlEmpezarNVL = puntuacion;
@@ -835,23 +842,24 @@ if (seconds == 0) {
 } 
 
 function crearMobs(){
-    console.log("ENTRA EN CREAR MOBS");
     let mounstruos = getMonstruos();
-    console.log("ENEMIGOS"+enemigosLVL);
-    console.log(mounstruos);
     for(let i=0;i<enemigosLVL;i++)
     {
         if(i==0)
         {
-            console.log("CREA MOB 1 :"+JSON.stringify(mounstruos[i]));
             mounstruo1 = mounstruos[i];
-            console.log("MOUNSTRUO 1 :"+mounstruo1);
         }
         if(i==1)
         {
-            console.log("CREA MOB 2 :"+JSON.stringify(mounstruos[i]));
             mounstruo2 = mounstruos[i];
-            console.log("MOUNSTRUO 2 :"+mounstruo2);
+        }
+        if(i==2)
+        {
+            mounstruo3 = mounstruos[i];
+        }
+        if(i==3)
+        {
+            mounstruo4 = mounstruos[i];
         }
     }
 }  
@@ -861,6 +869,14 @@ function playMobs(){
     if(nivel==1)
     {
         movimientoMobs(mounstruo2);
+    }
+    if(nivel==2)
+    {
+        movimientoMobs(mounstruo3);
+    }
+    if(nivel==3)
+    {
+        movimientoMobs(mounstruo4);
     }
 }
 
