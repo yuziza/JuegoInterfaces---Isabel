@@ -55,7 +55,7 @@ $(document).ready(function() {
 
     container();   
     $("#botonEleccion").click(function(){iniciar();});
-    console.log(ultimoNVLJugado);
+
     function iniciar(){
         if(document.getElementById("chico").checked)
             sexo=0;
@@ -70,21 +70,27 @@ function container()
 {
     if(nivel==4)
     {
+        clearInterval(countdownTimer);
+        clearInterval(countdownMobs);
         $(document).prop('title', '¡ENHORABUENA!');
         $("#container").html("");
     }
     if(nivel==-2)
     {
+        clearInterval(countdownTimer);
+        clearInterval(countdownMobs);
         $(document).prop('title', 'GAME OVER');
-        $("#container").html("<div id='container'> <h1>GAME OVER</h1> <h2>¿QUÉ QUIERES HACER?</h2> <input id='botonReload' class='botonInsertCoin' type='button' name='botonReload' value='VOLVER A INTENTAR'><br><br><input id='botonInicio' class='botonInsertCoin' type='button' name='botonInicio' value='IR AL INICIO'> </div>");
-        $("#botonReload").click(function(){nivel=ultimoNVLJugado; container();});
-        $("#botonInicio").click(function(){nivel=-1; container();}); 
+        $("#container").html("<center><div id='container'> <h1>GAME OVER</h1> <img src='images/interfaz/gameover.png'> <br><br><input id='botonInicio' class='botonInsertCoin' type='button' name='botonInicio' value='IR AL INICIO'> </div></center>");
+        $("#botonInicio").click(function(){window.location = window.location.href.split("?")[0];}); 
     }
 
     if(nivel==-1)
     {
+        clearInterval(countdownTimer);
+        clearInterval(countdownMobs);
         $(document).prop('title', 'PRACTICA-5');
         $("#container").html("<center><h1>BIENVENIDO A PRÁCTICA-5</h1><h2>ESTE JUEGO HA SIDO CREADO POR ISABEL FERNÁNDEZ</h2><h3>ELIGE TU PERSONAJE</h3><form id='frmElegido'><table><tr><td><img src='images/personaje/chicoAvatar.png'></td><td><img src='images/personaje/chicaAvatar.png'></td></tr><tr><td><input class='eleg' type='radio' name='elegido' id='chico' value='CHICO' checked></td><td><input class='eleg' type='radio' name='elegido' id='chica' value='CHICA'></td></tr></table><br><br><input class='botonInsertCoin' type='button' id='botonEleccion' value='INSERT COIN'></form></center>");
+
     }
     if(nivel==0)
     {
@@ -175,7 +181,7 @@ function container()
         $("#misionDisparo").css("color","white");     
     }
 
-    if(nivel!=-1)
+    if(nivel!=-1&&nivel!=-2&&nivel!=4)
     {
         personaje = new Personaje($('#personaje')); 
         if(sexo==0)
