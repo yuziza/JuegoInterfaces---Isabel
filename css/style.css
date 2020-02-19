@@ -1,0 +1,360 @@
+@font-face {font-family: "Pixelar Regular W01 Regular";
+src: url("../fonts/b2e75c336df191233b3096682c9ee6be.eot"); /* IE9*/
+src: url("../fonts/b2e75c336df191233b3096682c9ee6be.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+url("../fonts/b2e75c336df191233b3096682c9ee6be.woff2") format("woff2"), /* chrome、firefox */
+url("../fonts/b2e75c336df191233b3096682c9ee6be.woff") format("woff"), /* chrome、firefox */
+url("../fonts/b2e75c336df191233b3096682c9ee6be.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+url("../fonts/b2e75c336df191233b3096682c9ee6be.svg#Pixelar Regular W01 Regular") format("svg"); /* iOS 4.1- */
+}
+
+body{
+	padding: 30px;
+	background-color: black;
+	color: white;
+	font-family:"Pixelar Regular W01 Regular";
+}
+
+h1,h2,h3{
+	font-weight: normal;
+}
+
+h1{
+	font-size: 100px;
+}
+h2{
+	font-size: 70px;
+}
+h3{
+	font-size: 60px;
+}
+
+#nivel0{
+	display: none;
+}
+
+.botonInsertCoin{
+	font-family:"Pixelar Regular W01 Regular";
+	background-color: yellow;
+	color: black;
+	border: 10px dotted black;
+	font-size: 100px;
+	padding: 10px 25px 25px 25px;
+}
+/*==================== INTERFAZ ==========================*/
+#interfaz{
+	width: 1000px;
+	height: 700px;
+	background-image: url('../images/terrenos/suelo.png');
+	background-repeat: repeat;
+	position: fixed;
+	top:120px;
+	left:25%;
+}
+
+#vidas{
+	position: absolute;
+	left: 15em;
+}
+
+#espada, #llave{
+	margin-left: 10px;
+}
+
+#nivel{
+	font-family:"Pixelar Regular W01 Regular";
+	font-size:80px;
+	color: white;
+	position: absolute;
+	left: 45%;
+}
+
+#puntuacion{
+	position: absolute;
+	top: 10px;
+	right: 5em;
+	font-family:"Pixelar Regular W01 Regular";
+	font-size:50px;
+	text-align:center;
+	line-height: 100px;
+	color:#ffffff;
+	text-shadow:0 0 10px rgba(0,0,0,0.9);
+}
+
+#muletas{
+	position: fixed;
+	bottom: 20px;
+	left: 200px;
+	color:white;
+}
+
+#tiempo{
+	position: absolute;
+	bottom: 1em;
+	right: 5em;
+	font-size: 50px;
+	color: white;
+	font-family:"Pixelar Regular W01 Regular";
+}
+
+#misiones{
+	width: 400px;
+	height: 300px;
+	position: absolute;
+	top: 80px;
+	font-size: 30px;
+	text-align: justify-all;
+}
+#misiones li{
+	margin-bottom: 20px;
+}
+
+#moneda{
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	background-image: url('../images/interfaz/coin.gif');
+	background-color: transparent;
+	display: none;
+}
+
+#mensaje{
+	width: 500px;
+	font-family:"Pixelar Regular W01 Regular";
+	font-size: 40px;
+	text-align: center;
+	color: #4f9;
+	background-color: rgba(0,0,0,0.8);
+	border: 3px solid #4f9;
+	position: fixed;
+	top:400px;
+	left: 700px;
+	display: none;
+}
+
+
+/*================= PERSONAJE PRINCIPAL =================*/
+
+#personaje {
+	height: 42px;
+	width: 25px;
+	background-image: url('../images/personaje/chicaAbajo.png');
+	display: block;
+	position: absolute;
+}
+
+.disparo{
+	width: 10px;
+	height: 10px;
+	background-color: #4f9;
+	position: fixed;
+	border-radius: 100px;
+	box-shadow: 0 0 20px #4f9;
+}
+
+/*================= OBSTACULOS OBJETOS =================*/
+
+#cofreArma{
+	width: 30px;
+	height: 32px;
+	background-image: url('../images/obstaculos/cofreCerrado.png');
+	position: absolute;
+}
+
+#cofreLlave{
+	width: 30px;
+	height: 32px;
+	background-image: url('../images/obstaculos/cofreLlaveCerrado.png');
+	position: absolute;
+	z-index: 15;
+}
+
+#corazon{
+	width: 30px;
+	height: 26px;
+	background-image: url('../images/obstaculos/corazon.png');
+	position: absolute;
+}
+
+.mounstruo{
+	position: absolute;
+	/*box-shadow: 0 0 20px #4f9;
+	background-color: #4f9;
+	border-radius: 50px 50px 10px 10px;*/
+}
+
+#mounstruoMarino{
+	width: 64px;
+	height: 80px;
+	background-image: url('../images/mounstruos/mounstruoMarinoAbajo.gif');
+}
+
+#mounstruoDragon{
+	width: 85px;
+	height: 96px;
+	background-image: url('../images/mounstruos/mounstruoDragonAbajo.gif');
+}
+
+#mounstruoMuerte{
+	width: 75px;
+	height: 84px;
+	background-image: url('../images/mounstruos/mounstruoMuerteAbajo.gif');
+}
+/*==================== PAREDES ==========================*/
+#paredHorizontal{
+	height: 89px;
+	background-image: url('../images/pared/paredHorizontalCarcel.png');
+	background-repeat: repeat;
+}
+#paredVerticalRepeat{
+	width: 37px;
+	background-image: url('../images/pared/paredVerticalCarcelRepeat.png');
+	background-repeat: repeat;
+}
+
+/*===================OBSTACULOS NIVEL 0=====================*/
+#puertaCarcel{
+	width: 134px;
+	height: 89px;
+	background-image: url('../images/obstaculos/NIVEL0/puertaCarcel.png');
+	position: absolute;
+	background-color: transparent;
+}
+
+#puertaEspecialNVL0{
+	width: 134px;
+	height: 89px;
+	background-image: url('../images/obstaculos/NIVEL0/puertaCarcel.png');
+	position: absolute;
+	background-color: transparent;
+}
+
+#literaHorizontal{
+	width: 96px;
+	height: 108px;
+	background-image: url('../images/obstaculos/NIVEL0/literasCarcelHorizontal.png');
+	position: absolute;
+	background-color: transparent;
+}
+
+#barrilRoto{
+	width: 47px;
+	height: 43px;
+	background-image: url('../images/obstaculos/NIVEL0/barrilRoto.png');
+	position: absolute;
+	background-color: transparent;
+}
+
+#barril{
+	width: 44px;
+	height: 46px;
+	position: absolute;
+	background-image: url('../images/obstaculos/NIVEL0/barril.png');
+	background-color: transparent;
+}
+
+#sillaMesa{
+	width: 48px;
+	height: 150px;
+	position: absolute;
+	background-image: url('../images/obstaculos/NIVEL0/sillaMesa.png');
+	background-repeat: repeat;
+	background-color: transparent;
+}
+
+#bolaCadena{
+	width: 38px;
+	height: 46px;
+	position: absolute;
+	background-image: url('../images/obstaculos/NIVEL0/bolaCadena.png');
+	background-color: transparent;
+}
+
+#sacos{
+	width: 49px;
+	height: 94px;
+	position: absolute;
+	background-image: url('../images/obstaculos/NIVEL0/sacos.png');
+	background-color: transparent;
+	background-repeat: repeat;
+}
+
+#cerdito{
+	width: 45px;
+	height: 49px;
+	background-image: url('../images/obstaculos/NIVEL0/guinoIllusionOfTime.gif');
+	position: absolute;
+	background-color: transparent;
+}
+
+/*======== LVL 01 =========*/
+#trozotierra{
+	position: absolute; 
+	background-image: url('../images/terrenos/sueloLVL1.png'); 
+	background-repeat: repeat;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, .5);
+	border-radius: 20px;
+	z-index: 9;
+}
+
+#muroInvisible{
+	background-color: transparent;
+	position: absolute;
+}
+
+#puente{
+	height: 70px;
+	background-color: transparent;
+	position: absolute;
+}
+
+#agua{
+	width: 150px;
+	height: 150px;
+	/*border-radius: 50px;*/
+	box-shadow: 0px 0px 15px black;
+	position: absolute;
+	background-image: url('../images/terrenos/agua.gif');
+	background-repeat: repeat;
+}
+
+#palanca{
+	width: 26px;
+	height: 22px;
+	background-image: url('../images/obstaculos/NIVEL1/palancaRoja.png');
+	position: absolute;
+	background-color: transparent;
+}
+
+#estrella{
+	width: 32px;
+	height: 30px;
+	background-image: url('../images/obstaculos/NIVEL1/estrella.png');
+	position: absolute;
+	background-color: transparent;
+	z-index: 10;
+}
+
+#roca1{
+	width: 46px;
+	height: 44px;
+	background-image: url('../images/obstaculos/NIVEL1/roca1.png');
+	position: absolute;
+	background-color: transparent;
+	background-repeat: repeat;
+	z-index: 10;
+}
+
+/*==================PUERTAS=======================*/
+#puertaNV0{
+	width: 45px;
+	height: 93px;
+	background-image: url('../images/pared/agujero.png');
+	position: absolute;
+}
+
+.suelo {
+	margin: 0;
+	background: blue;
+	position: absolute;
+	display: block;
+}
