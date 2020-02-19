@@ -286,6 +286,7 @@ function mueve(t) {
         {
             if(exit)
             {
+                puntuacion+=150;
                 nivel++;
                 container();
             }
