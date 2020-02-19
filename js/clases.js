@@ -218,7 +218,7 @@ moverArriba(tipo) {
     this.capa.css("height", "42px");
     if(tipo==1)
     {
-        this.capa.animate({ top: this.arriba -= 10 }, { duration: 1, queue: false });
+        this.capa.animate({ top: this.arriba -= 5 }, { duration: 1, queue: false });
     }
     if(tipo==2)
     {
@@ -232,7 +232,7 @@ moverAbajo(tipo) {
     this.capa.css("height", "42px");
     if(tipo==1)
     {
-        this.capa.animate({ top: this.arriba += 10}, { duration: 1, queue: false });
+        this.capa.animate({ top: this.arriba += 5}, { duration: 1, queue: false });
     }
     if(tipo==2)
     {
@@ -246,7 +246,7 @@ moverDerecha(tipo) {
     this.capa.css("height", "43px");
     if(tipo==1)
     {
-        this.capa.animate({ left: this.izquierda += 10 }, { duration: 1, queue: false });
+        this.capa.animate({ left: this.izquierda += 5 }, { duration: 1, queue: false });
     }
     if(tipo==2)
     {
@@ -260,7 +260,7 @@ moverIzquierda(tipo) {
     this.capa.css("height", "43px");
     if(tipo==1)
     {
-        this.capa.animate({ left: this.izquierda -= 10 }, { duration: 1, queue: false });
+        this.capa.animate({ left: this.izquierda -= 5 }, { duration: 1, queue: false });
         console.log(this.izquierda);
     }
     if(tipo==2)
