@@ -9,10 +9,64 @@
 <body>
 	<center>
 		<div id="container">
-			<h1>GAME OVER</h1>
-			<h2>¿QUÉ QUIERES HACER?</h2>
-			<input type="button" name="botonReload" value="VOLVER A INTENTAR">
-			<input type="button" name="botonInicio" value="IR AL INICIO">
+			<div id='vidas'> 
+			<img id='corazon1'>
+			<img id='corazon2'>
+			<img id='corazon3'> 
+			<img id='corazon4'> 
+			<img id='espada'> 
+			<img id='llave'> 
+			</div> 
+			<div id='nivel'>NIVEL</div> 
+			<div id='puntuacion'>PUNTOS: 0</div> 
+			<div id='misiones'> 
+				<center><h3>MISIONES</h3></center> 
+				<ul> 
+					<li id='misionDisparo'>Mata a todos los enemigos</li>
+					<li id='misionLlave'>Encuentra la llave</li>
+					</ul>
+			</div> 
+			<div id='interfaz'> 
+				<!-- PAREDES QUE DELIMITAN LA PANTALLA--> 
+				<div id='paredHorizontal' class='suelo' style='width: 100%;'></div> 
+				<div id='paredHorizontal' class='suelo' style='width: 100%; bottom: 0em;'></div> 
+				<div id='paredVerticalRepeat' class='suelo' style='height: 611px;'></div> 
+				<div id='paredVerticalRepeat' class='suelo' style='height: 611px; right: 0px;'></div> 
+				<!--OBSTACULOS roca1(w-46/h-44)-->
+				<div id='roca1' class='suelo' style='top: 90px; right: 300px; height: 440px;'></div>
+				<div id='roca1' class='suelo' style='top: 300px; right: 206px; width: 92px;'></div>
+				<div id='roca1' class='suelo' style='top: 300px; right: 50px; width: 92px;'></div>
+				<div id='roca1' class='suelo' style='top: 90px; right: 50px; width: 92px; height: 88px;'></div>
+				<div id='roca1' class='suelo' style='top: 90px; right: 205px; width: 92px; height: 88px;'></div>
+				<div id='roca1' class='suelo' style='top: 224px; right: 350px; width: 92px;'></div>
+				<div id='roca1' class='suelo' style='top: 90px; right: 500px; height: 352px;'></div>
+				<div id='roca1' class='suelo' style='top: 400px; right: 400px; width: 92px;'></div>
+
+
+				<!--COFRES--> 
+				<div id='cofreLlave' class='llave' style='top:90px; right: 160px;'></div>  
+				<!--CORAZONES--> 
+				<!--<div id='corazon' class='corazon' style='top:145px; left: 60px;'></div>--> 
+				<!--PUERTAS-->
+				<div id='puertaReja' class='exit' style='top:40px; left: 580px;'></div>
+
+			</div> 
+				<!--PERSONAJE-->
+				<div id='personaje'></div> 
+				<!--MOUNSTRUOS--> 
+				<div id='mounstruoMarino' class='mounstruo' style='top:300px; right: 550px;'></div> 
+				<div id='mounstruoMarino' class='mounstruo' style='top:0px; left: 0px;'></div>
+				<div id='mounstruoMarino' class='mounstruo' style='top:0px; left: 0px;'></div>
+				<div id='muletas'> 
+					<img id='botonArriba' src='images/interfaz/flechaArriba.png'>
+					<img id='botonAbajo' src='images/interfaz/flechaAbajo.png'>
+					<img id='botonDerecha' src='images/interfaz/flechaDerecha.png'>
+					<img id='botonIzquierda' src='images/interfaz/flechaIzquierda.png'>
+					<img id='botonSpace' src='images/interfaz/space.png'> 
+				</div> 
+				<div id='tiempo'> </div> 
+				<div id='mensaje'></div> 
+				<div id='moneda'></div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/clases.js"></script>
@@ -20,6 +74,3 @@
 	</center>
 </body>
 </html>
-
-
-ultimoNVLJugado

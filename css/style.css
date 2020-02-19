@@ -114,7 +114,7 @@ tr, td{
 	position: absolute;
 	top: 80px;
 	font-size: 30px;
-	text-align: justify-all;
+	text-align: justify;
 }
 #misiones li{
 	margin-bottom: 20px;
@@ -356,6 +356,15 @@ tr, td{
 	z-index: 10;
 }
 
+/*LVL 2*/
+#puertaReja{
+	width: 44px;
+	height: 57px;
+	background-image: url('../images/obstaculos/NIVEL1/puertaReja.png');
+	position: absolute;
+	background-color: transparent;
+	z-index: 10;
+}
 /*==================PUERTAS=======================*/
 #puertaNV0{
 	width: 45px;

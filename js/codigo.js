@@ -9,7 +9,7 @@ let suelo;
 let disparo;
 let vida = 4;
 let numeroDisparos=0;
-let nivel=-1;
+let nivel=2;
 let key=false;
 
 //POSICIONES
@@ -112,14 +112,14 @@ function container()
         seconds = 60;
         puntuacionAlEmpezarNVL = puntuacion;
         ultimoNVLJugado = 1;
-        velocidadMobs = 900;
+        velocidadMobs = 800;
         misionDisparo = false;
         misionLlave = false;
         arma=true;
         llave = false;
         exit = false;
         $(document).prop('title', 'NIVEL 1');
-        $("#container").html("<div id='vidas'> <img id='corazon1'> <img id='corazon2'> <img id='corazon3'> <img id='corazon4'> <img id='espada'> <img id='llave'> </div> <div id='nivel'>NIVEL</div> <div id='puntuacion'>PUNTOS: 0</div> <div id='misiones'> <center><h3>MISIONES</h3></center> <ul> <li id='misionDisparo'>Mata a todos los enemigos</li> <li id='misionLlave'>Encuentra la llave</li> <li id='misionEstrella'>Encuentra la estrella dorada</li> </ul> </div> <div id='interfaz'> <!-- PAREDES QUE DELIMITAN LA PANTALLA--> <div id='paredHorizontal' class='suelo' style='width: 100%;'></div> <div id='paredHorizontal' class='suelo' style='width: 100%; bottom: 0em;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px; right: 0px;'></div> <!--ESTRELLA--> <div id='agua' style='width: 600px; height: 300px; top: 200px; left:47px;'></div> <div id='trozotierra' style='top: 270px; left: 100px; width: 200px; height: 150px;'></div> <div id='palanca' class='palanca' style='right: 60px; top:100px;'></div> <div id='estrella' class='estrella' style='left: 180px; top:320px;'></div> <!---TIPO SUELO EN AGUA--> <div id='muroInvisible' class='suelo' style='width: 600px; height: 65px; top: 200px; left: 47px;'></div> <div id='muroInvisible' class='suelo' style='width: 600px; height: 70px; top: 425px; left: 47px;'></div> <div id='muroInvisible' class='suelo' style='width: 50px; height: 170px; top: 260px; left: 47px;'></div> <div id='muroInvisible' class='suelo' style='width: 346px; height: 50px; top: 260px; left: 300px;'></div> <div id='muroInvisible' class='suelo' style='width: 346px; height: 50px; top: 380px; left: 300px;'></div> <div id='puente' class='suelo' style='width: 346px; top: 310px; left: 300px;'></div> <!--SALIDA--> <div id='puertaNV0' class='exit' style='top:0px; left: 500px;'></div> <!--COFRES--> <div id='cofreLlave' class='llave' style='top:540px; left: 110px;'></div>  <!--Obstaculos--> <div id='roca1' class='suelo' style='width: 276px ; top: 90px; left: 50px;'></div> <div id='roca1' class='suelo' style='width: 230px ; top: 150px; left: 400px;'></div> <div id='roca1' class='suelo' style='width: 184px ; top: 260px; left: 110px;'></div> <div id='roca1' class='suelo' style='width: 46px ; top: 315px; left: 110px;'></div> <div id='roca1' class='suelo' style='width: 184px ; top: 370px; left: 110px;'></div> <div id='roca1' class='suelo' style='height: 264px ; top: 100px; right: 100px;'></div> <div id='roca1' class='suelo' style='height: 220px ; top: 100px; right: 150px;'></div> <div id='roca1' class='suelo' style='height: 176px ; top: 100px; right: 200px;'></div> <div id='roca1' class='suelo' style='bottom: 80px; height: 138px; left: 50px;'></div> <div id='roca1' class='suelo' style='height: 30px; bottom: 88px; left: 110px;'></div> <div id='roca1' class='suelo' style='bottom: 170px; left: 110px;'></div> <!--CORAZONES--> <div id='corazon' class='corazon' style='top:145px; left: 60px;'></div> </div> <div id='personaje'></div> <!--MOUNSTRUOS--> <div id='mounstruoMarino' class='mounstruo' style='top:635px; left: 700px;'></div> <div id='mounstruoMarino' class='mounstruo' style='top:550px; right: 550px;'></div><div id='muletas'> <img id='botonArriba' src='images/interfaz/flechaArriba.png'><img id='botonAbajo' src='images/interfaz/flechaAbajo.png'><img id='botonDerecha' src='images/interfaz/flechaDerecha.png'><img id='botonIzquierda' src='images/interfaz/flechaIzquierda.png'><img id='botonSpace' src='images/interfaz/space.png'> </div> <div id='tiempo'> </div> <div id='mensaje'></div> <div id='moneda'></div>");
+        $("#container").html("<div id='vidas'> <img id='corazon1'> <img id='corazon2'> <img id='corazon3'> <img id='corazon4'> <img id='espada'> <img id='llave'> </div> <div id='nivel'>NIVEL</div> <div id='puntuacion'>PUNTOS: 0</div> <div id='misiones'> <center><h3>MISIONES</h3></center> <ul> <li id='misionDisparo'>Mata a todos los enemigos</li> <li id='misionLlave'>Encuentra la llave</li> <li id='misionEstrella'>Encuentra la estrella dorada</li> </ul> </div> <div id='interfaz'> <!-- PAREDES QUE DELIMITAN LA PANTALLA--> <div id='paredHorizontal' class='suelo' style='width: 100%;'></div> <div id='paredHorizontal' class='suelo' style='width: 100%; bottom: 0em;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px; right: 0px;'></div> <!--ESTRELLA--> <div id='agua' style='width: 600px; height: 300px; top: 200px; left:47px;'></div> <div id='trozotierra' style='top: 270px; left: 100px; width: 200px; height: 150px;'></div> <div id='palanca' class='palanca' style='right: 60px; top:100px;'></div> <div id='estrella' class='estrella' style='left: 180px; top:320px;'></div> <!---TIPO SUELO EN AGUA--> <div id='muroInvisible' class='suelo' style='width: 600px; height: 65px; top: 200px; left: 47px;'></div> <div id='muroInvisible' class='suelo' style='width: 600px; height: 70px; top: 425px; left: 47px;'></div> <div id='muroInvisible' class='suelo' style='width: 50px; height: 170px; top: 260px; left: 47px;'></div> <div id='muroInvisible' class='suelo' style='width: 346px; height: 50px; top: 260px; left: 300px;'></div> <div id='muroInvisible' class='suelo' style='width: 346px; height: 50px; top: 380px; left: 300px;'></div> <div id='puente' class='suelo' style='width: 346px; top: 310px; left: 300px;'></div> <!--SALIDA--> <div id='puertaNV0' style='top:0px; left: 500px;'></div><div id='puertaReja' class='exit' style='top:40px; left: 580px;'></div> <!--COFRES--> <div id='cofreLlave' class='llave' style='top:540px; left: 110px;'></div>  <!--Obstaculos--> <div id='roca1' class='suelo' style='width: 276px ; top: 90px; left: 50px;'></div> <div id='roca1' class='suelo' style='width: 230px ; top: 150px; left: 400px;'></div> <div id='roca1' class='suelo' style='width: 184px ; top: 260px; left: 110px;'></div> <div id='roca1' class='suelo' style='width: 46px ; top: 315px; left: 110px;'></div> <div id='roca1' class='suelo' style='width: 184px ; top: 370px; left: 110px;'></div> <div id='roca1' class='suelo' style='height: 264px ; top: 100px; right: 100px;'></div> <div id='roca1' class='suelo' style='height: 220px ; top: 100px; right: 150px;'></div> <div id='roca1' class='suelo' style='height: 176px ; top: 100px; right: 200px;'></div> <div id='roca1' class='suelo' style='bottom: 80px; height: 138px; left: 50px;'></div> <div id='roca1' class='suelo' style='height: 30px; bottom: 88px; left: 110px;'></div> <div id='roca1' class='suelo' style='bottom: 170px; left: 110px;'></div> <!--CORAZONES--> <div id='corazon' class='corazon' style='top:145px; left: 60px;'></div> </div> <div id='personaje'></div> <!--MOUNSTRUOS--> <div id='mounstruoMarino' class='mounstruo' style='top:635px; left: 700px;'></div> <div id='mounstruoMarino' class='mounstruo' style='top:550px; right: 550px;'></div><div id='muletas'> <img id='botonArriba' src='images/interfaz/flechaArriba.png'><img id='botonAbajo' src='images/interfaz/flechaAbajo.png'><img id='botonDerecha' src='images/interfaz/flechaDerecha.png'><img id='botonIzquierda' src='images/interfaz/flechaIzquierda.png'><img id='botonSpace' src='images/interfaz/space.png'> </div> <div id='tiempo'> </div> <div id='mensaje'></div> <div id='moneda'></div>");
         $("#interfaz").css("background-image", "url(images/terrenos/sueloLVL1.png)");
         $('#espada').attr("src","images/interfaz/espada.png");
         $("div#paredHorizontal").css("background-image", "url(images/pared/paredHorizontalLVL1.png)");
@@ -137,23 +137,23 @@ function container()
     {
         ultimoNVLJugado = 2;
         enemigosLVL=3;
-        seconds = 140;
+        seconds = 999;
         puntuacionAlEmpezarNVL = puntuacion;
-        velocidadMobs = 800;
+        velocidadMobs = 600;
         misionDisparo = false;
         misionLlave = false;
         arma=true;
         llave = false;
         exit = false;
         $(document).prop('title', 'NIVEL 2');
-        $("#container").html("");
+        //$("#container").html("");
         $("#interfaz").css("background-image", "url(images/terrenos/sueloLVL1.png)");
         $('#espada').attr("src","images/interfaz/espada.png");
         $("div#paredHorizontal").css("background-image", "url(images/pared/paredHorizontalLVL1.png)");
         $("div#paredVerticalRepeat").css("background-image","url(images/pared/paredVerticalLVL1.png)");
         $("div#paredVerticalRepeat").css("width","48px");
         $("#personaje").css("top", "210px");
-        $("#personaje").css("left", "980px");
+        $("#personaje").css("right", "790px");
         $("#misionDisparo").css("color","white");     
     }
 
@@ -785,6 +785,10 @@ function getPuertas(){
         let puerta = new Objeto($(val));
         puertas.push(puerta);
     });
+    $("#puertaReja").each((i,val) => {
+        let puerta = new Objeto($(val));
+        puertas.push(puerta);
+    });
     return puertas;
 }
 
@@ -872,15 +876,15 @@ function crearMobs(){
 
 function playMobs(){
     movimientoMobs(mounstruo1);
-    if(nivel==1)
+    if(nivel>=1)
     {
         movimientoMobs(mounstruo2);
     }
-    if(nivel==2)
+    if(nivel>=2)
     {
         movimientoMobs(mounstruo3);
     }
-    if(nivel==3)
+    if(nivel>=3)
     {
         movimientoMobs(mounstruo4);
     }
@@ -891,28 +895,24 @@ function movimientoMobs(mounstruo){
     switch(direccion)
     {
         case 1:
-        console.log("colisionaPorArriba:"+mounstruo.colisionaPorArriba());
         if(!mounstruo.colisionaPorArriba())
             {mounstruo.moverArriba();mounstruo.moverArriba();}
         else
             mounstruo.moverAbajo();
         break;
         case 2:
-        console.log("colisionaPorAbajo:"+mounstruo.colisionaPorAbajo());
         if(!mounstruo.colisionaPorAbajo())
             mounstruo.moverAbajo();
         else
             mounstruo.moverArriba();
         break;
         case 3:
-        console.log("colisionaPorDerecha:"+mounstruo.colisionaPorDerecha());
         if(!mounstruo.colisionaPorDerecha())
             mounstruo.moverDerecha();
         else
             mounstruo.moverIzquierda();
         break;
         case 4:
-        console.log("colisionaPorIzquierda:"+mounstruo.colisionaPorIzquierda());
         if(!mounstruo.colisionaPorIzquierda())
             {mounstruo.moverIzquierda();mounstruo.moverIzquierda();}
         else
