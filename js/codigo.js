@@ -114,13 +114,15 @@ function container()
     if(nivel!=-1)
     {
         personaje = new Personaje($('#personaje')); 
-        clearInterval(countdownTimer);
-        countdownTimer = setInterval(secondPassed, 1000);
-        countdownMobs = setInterval(playMobs, velocidadMobs);
+        
         $("#puntuacion").html("PUNTOS: "+puntuacion);
         $("#nivel").html("NIVEL "+nivel);
         comprobarVida();
         crearMobs();
+        clearInterval(countdownTimer);
+        countdownTimer = setInterval(secondPassed, 1000);
+        clearInterval(countdownMobs);
+        countdownMobs = setInterval(playMobs, velocidadMobs);
 
         if(key!=true)
         {
