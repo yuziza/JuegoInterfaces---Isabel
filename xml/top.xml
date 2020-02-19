@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<top> 
+	<usuario>
+		<num>1</num>
+		<nombre>Usuario</nombre>
+		<puntuacion>0</puntuacion> 
+	</usuario> 
+	<usuario>
+		<num>2</num>
+		<nombre>Usuario</nombre>
+		<puntuacion>0</puntuacion>
+	</usuario>
+	<usuario>
+		<num>3</num>
+		<nombre>Usuario</nombre>
+		<puntuacion>0</puntuacion>
+	</usuario>
+	<usuario>
+		<num>4</num>
+		<nombre>Usuario</nombre>
+		<puntuacion>0</puntuacion>
+	</usuario>
+	<usuario>
+		<num>5</num>
+		<nombre>Usuario</nombre>
+		<puntuacion>0</puntuacion>
+	</usuario>
+</top>
