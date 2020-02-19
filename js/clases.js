@@ -44,7 +44,7 @@ colisionaPorAbajo(tipo) {
     if (tipo == "mounstruo") {
         let mounstruos = getMonstruos();
         mounstruos.forEach(val => {
-           if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+         if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
             colisiona = true;
         }
     });
@@ -52,7 +52,7 @@ colisionaPorAbajo(tipo) {
     if (tipo == "corazon") {
         let corazones = getCorazones();
         corazones.forEach(val => {
-           if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+         if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
             colisiona = true;
             if(vida<4)
                 val.capa.remove();
@@ -114,12 +114,12 @@ colisionaPorArriba(tipo) {
         });
     }
     if (tipo == "puertaEspecial") {
-       let puertas = getPuertas();
-       puertas.forEach(val => {
-           if (this.abajo > val.arriba && this.arriba - 10 < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
-               colisiona = true;
-               if(llave)
-               {
+     let puertas = getPuertas();
+     puertas.forEach(val => {
+         if (this.abajo > val.arriba && this.arriba - 10 < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+             colisiona = true;
+             if(llave)
+             {
                 if(val.capa.attr("class")=="exit")
                 {
                     exit = true;
@@ -129,8 +129,8 @@ colisionaPorArriba(tipo) {
             }
         }
     });
-   }
-   return colisiona;
+ }
+ return colisiona;
 }
 colisionaPorDerecha(tipo) {
     let colisiona = false;
@@ -340,8 +340,8 @@ class Mounstruo {
     //this.capa.css("height", "42px");
     this.capa.animate({ top: this.arriba -= 5 }, { duration: 1, queue: false });
     this.actualizaCoordenadas();
-    }
-    moverAbajo() {
+}
+moverAbajo() {
         //this.capa.css("background-image", "url(images/personaje/chicaAbajo.gif)");
         //this.capa.css("width", "25px");
         //this.capa.css("height", "42px");
@@ -366,6 +366,124 @@ class Mounstruo {
     actualizaCoordenadas(movimiento) {
         this.derecha = this.izquierda + this.anchura;
         this.abajo = this.arriba + this.altura;
+    }
+
+    colisionaPorAbajo(tipo) {
+        let colisiona = false;
+        if (tipo == "terreno") {
+            let terrenos = getTerrenos();
+            terrenos.forEach(val => {
+                if (this.abajo + 10 > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+                    colisiona = true;
+                }
+            });
+        }
+        if (tipo == "mounstruo") {
+            let mounstruos = getMonstruos();
+            mounstruos.forEach(val => {
+             if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+                colisiona = true;
+            }
+        });
+        }
+        if (tipo == "objeto") {
+            let objetos = getObjetos();
+            objetos.forEach(val => {
+             if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+                colisiona = true;
+            }
+        });
+        }
+        return colisiona;
+    }
+    colisionaPorArriba(tipo) {
+        let colisiona = false;
+        if (tipo == "terreno") {
+            let terrenos = getTerrenos();
+            terrenos.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba - 10 < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+                    colisiona = true;
+                }
+            });
+        }
+
+        if (tipo == "mounstruo") {
+            let mounstruos = getMonstruos();
+            mounstruos.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+                    colisiona = true;
+                }
+            });
+        }
+        if (tipo == "objeto") {
+            let objetos = getObjetos();
+            objetos.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+                    colisiona = true;
+                    if(vida<4)
+                        val.capa.remove();
+                }
+            });
+        }
+        return colisiona;
+    }
+    colisionaPorDerecha(tipo) {
+        let colisiona = false;
+        if (tipo == "terreno") {
+            let terrenos = getTerrenos();
+            terrenos.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha + 10 > val.izquierda && this.izquierda < val.derecha) {
+                    colisiona = true;
+                }
+            });
+        }
+        if (tipo == "mounstruo") {
+            let mounstruos = getMonstruos();
+            mounstruos.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+                    colisiona = true;
+                }
+            });
+        }
+        if (tipo == "objeto") {
+            let objetos = getObjetos();
+            objetos.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+                    colisiona = true;
+                    if(vida<4)
+                        val.capa.remove();
+                }
+            });
+        }
+        return colisiona;
+    }
+    colisionaPorIzquierda(tipo) {
+        let colisiona = false;
+        if (tipo == "terreno") {
+            let terrenos = getTerrenos();
+            terrenos.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda - 10 < val.derecha) {
+                    colisiona = true;
+                }
+            });
+        }
+        if (tipo == "mounstruo") {
+            let mounstruos = getMonstruos();
+            mounstruos.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+                    colisiona = true;
+                }
+            });
+        }
+        if (tipo == "objeto") {
+            let objetos = getObjetos();
+            objetos.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+                    colisiona = true;
+                }
+            });
+        }
+        return colisiona;
     }
 }
 
@@ -417,7 +535,7 @@ class Disparo {
         if (tipo == "mounstruo") {
             let mounstruos = getMonstruos();
             mounstruos.forEach(val => {
-               if (this.abajo + 10 > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+             if (this.abajo + 10 > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
                 colisiona = true;
                 setTimeout(function() {val.capa.remove();}, 300);
             }
