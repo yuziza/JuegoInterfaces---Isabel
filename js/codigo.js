@@ -654,7 +654,7 @@ function getPuertas(){
         puertas.push(puerta);
     });
     $("#puertaNV0").each((i,val) => {
-        let puerta = new Puerta($(val));
+        let puerta = new Objeto($(val));
         puertas.push(puerta);
     });
     return puertas;
