@@ -807,7 +807,7 @@ function playMobs(){
 }
 
 function movimientoMobs(mounstruo){
-    var direccion = Math.round(Math.random() * (4 - 1) + 1);
+    var direccion = Math.round(Math.random() * 4);
     switch(direccion)
     {
         case 1:
