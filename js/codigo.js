@@ -590,7 +590,7 @@ function consigueLlave(){
 function getTerrenos() {
     let terrenos = [];
     $(".suelo").each((i,val) => {
-        let terreno = new Terreno($(val));
+        let terreno = new Objeto($(val));
         terrenos.push(terreno);
     });
     return terrenos;
@@ -600,7 +600,7 @@ function getTerrenos() {
 function getPalancas() {
     let palancas = [];
     $("#palanca").each((i,val) => {
-        let palanca = new Palanca($(val));
+        let palanca = new Objeto($(val));
         palancas.push(palanca);
     });
     return palancas;
@@ -610,7 +610,7 @@ function getPalancas() {
 function getEstrellas() {
     let estrellas = [];
     $("#estrella").each((i,val) => {
-        let estrella = new Estrella($(val));
+        let estrella = new Objeto($(val));
         estrellas.push(estrella);
     });
     return estrellas;
@@ -620,7 +620,7 @@ function getEstrellas() {
 function getArmas(){
     let armas = [];
     $(".arma").each((i,val) => {
-        let arma = new Arma($(val));
+        let arma = new Objeto($(val));
         armas.push(arma);
     });
     return armas;
@@ -630,7 +630,7 @@ function getArmas(){
 function getCorazones(){
     let corazones = [];
     $(".corazon").each((i,val) => {
-        let corazon = new Corazon($(val));
+        let corazon = new Objeto($(val));
         corazones.push(corazon);
     });
     return corazones;
@@ -640,7 +640,7 @@ function getCorazones(){
 function getLlaves(){
     let llaves = [];
     $(".llave").each((i,val) => {
-        let llave = new Llave($(val));
+        let llave = new Objeto($(val));
         llaves.push(llave);
     });
     return llaves;
@@ -650,7 +650,7 @@ function getLlaves(){
 function getPuertas(){
     let puertas = [];
     $("#puertaEspecialNVL0").each((i,val) => {
-        let puerta = new Puerta($(val));
+        let puerta = new Objeto($(val));
         puertas.push(puerta);
     });
     $("#puertaNV0").each((i,val) => {
