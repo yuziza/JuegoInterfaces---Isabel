@@ -335,19 +335,19 @@ class Mounstruo {
     }
 
     moverArriba() {
-        this.capa.animate({ top: this.arriba -= 5 }, { duration: 10, queue: false });
+        this.capa.animate({ top: this.arriba -= 10 }, { duration: 10, queue: false });
         this.actualizaCoordenadas();
     }
     moverAbajo() {
-        this.capa.animate({ top: this.arriba += 5}, { duration: 10, queue: false });
+        this.capa.animate({ top: this.arriba += 10}, { duration: 10, queue: false });
         this.actualizaCoordenadas();
     }
     moverDerecha() {
-        this.capa.animate({ left: this.izquierda += 5 }, { duration: 10, queue: false });
+        this.capa.animate({ left: this.izquierda += 10 }, { duration: 10, queue: false });
         this.actualizaCoordenadas();
     }
     moverIzquierda() {
-        this.capa.animate({ left: this.izquierda -= 5 }, { duration: 10, queue: false });
+        this.capa.animate({ left: this.izquierda -= 10 }, { duration: 10, queue: false });
         this.actualizaCoordenadas();
     }
     actualizaCoordenadas(movimiento) {
