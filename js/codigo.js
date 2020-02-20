@@ -9,7 +9,7 @@ let suelo;
 let disparo;
 let vida = 4;
 let numeroDisparos=0;
-let nivel=2;
+let nivel=-1;
 let key=false;
 
 //POSICIONES
@@ -95,7 +95,7 @@ function container()
     if(nivel==0)
     {
         enemigosLVL=1;
-        seconds = 60;
+        seconds = 120;
         puntuacionAlEmpezarNVL = 0;
         ultimoNVLJugado = 0;
         velocidadMobs = 1000;
@@ -109,7 +109,7 @@ function container()
     if(nivel==1)
     {
         enemigosLVL=2;
-        seconds = 60;
+        seconds = 90;
         puntuacionAlEmpezarNVL = puntuacion;
         ultimoNVLJugado = 1;
         velocidadMobs = 800;
@@ -137,7 +137,7 @@ function container()
     {
         ultimoNVLJugado = 2;
         enemigosLVL=3;
-        seconds = 999;
+        seconds = 60;
         puntuacionAlEmpezarNVL = puntuacion;
         velocidadMobs = 600;
         misionDisparo = false;
@@ -146,7 +146,7 @@ function container()
         llave = false;
         exit = false;
         $(document).prop('title', 'NIVEL 2');
-        //$("#container").html("");
+        $("#container").html("<div id='vidas'> <img id='corazon1'> <img id='corazon2'> <img id='corazon3'> <img id='corazon4'> <img id='espada'> <img id='llave'> </div> <div id='nivel'>NIVEL</div> <div id='puntuacion'>PUNTOS: 0</div> <div id='misiones'> <center><h3>MISIONES</h3></center> <ul> <li id='misionDisparo'>Mata a todos los enemigos</li> <li id='misionLlave'>Encuentra la llave</li> </ul> </div> <div id='interfaz'> <!-- PAREDES QUE DELIMITAN LA PANTALLA--> <div id='paredHorizontal' class='suelo' style='width: 100%;'></div> <div id='paredHorizontal' class='suelo' style='width: 100%; bottom: 0em;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px; right: 0px;'></div> <!--OBSTACULOS roca1(w-46/h-44)--> <div id='roca1' class='suelo' style='top: 90px; right: 300px; height: 440px;'></div> <div id='roca1' class='suelo' style='top: 300px; right: 206px; width: 92px;'></div> <div id='roca1' class='suelo' style='top: 300px; right: 50px; width: 92px;'></div> <div id='roca1' class='suelo' style='top: 90px; right: 50px; width: 92px; height: 88px;'></div> <div id='roca1' class='suelo' style='top: 90px; right: 205px; width: 92px; height: 88px;'></div> <div id='roca1' class='suelo' style='top: 224px; right: 350px; width: 92px;'></div> <div id='roca1' class='suelo' style='top: 90px; right: 500px; height: 396px;'></div> <div id='roca1' class='suelo' style='top: 400px; right: 400px; width: 92px;'></div> <div id='roca1' class='suelo' style='top: 490px; right: 155px; width: 138px;'></div> <div id='roca1' class='suelo' style='top: 390px; right: 160px; width: 92px;'></div> <div id='roca1' class='suelo' style='top: 400px; right: 110px; height: 132px;'></div> <div id='roca1' class='suelo' style='top: 90px; right: 620px; height: 264px;'></div> <div id='roca1' class='suelo' style='top: 443px; right: 550px; width: 184px;'></div> <div id='roca1' class='suelo' style='top: 220px; left: 220px; height: 264px;'></div> <div id='roca1' class='suelo' style='bottom: 90px; left: 50px; width: 92px; height: 88px;'></div> <div id='roca1' class='suelo' style='top: 90px; left: 50px; width: 92px; height: 88px;'></div> <!--COFRES--> <div id='cofreLlave' class='llave' style='top:90px; right: 160px;'></div> <!--CORAZONES--> <div id='corazon' class='corazon' style='top:450px; right: 180px;'></div> <!--PUERTAS--> <div id='puertaReja' style='top:40px; left: 580px;'></div> <div id='escalera' class='exit' style='left: 400px;'></div> <div id='calavera' class='suelo' style='left: 395px; top: 230px;'></div> </div> <!--PERSONAJE--> <div id='personaje'></div> <!--MOUNSTRUOS--> <div id='mounstruoMarino' class='mounstruo' style='top:300px; right: 550px;'></div> <div id='mounstruoMarino' class='mounstruo' style='bottom:250px; left: 990px;'></div> <div id='mounstruoMarino' class='mounstruo' style='top:400px; left: 600px;'></div> <div id='muletas'> <img id='botonArriba' src='images/interfaz/flechaArriba.png'> <img id='botonAbajo' src='images/interfaz/flechaAbajo.png'> <img id='botonDerecha' src='images/interfaz/flechaDerecha.png'> <img id='botonIzquierda' src='images/interfaz/flechaIzquierda.png'> <img id='botonSpace' src='images/interfaz/space.png'> </div> <div id='tiempo'> </div> <div id='mensaje'></div> <div id='moneda'></div>");
         $("#interfaz").css("background-image", "url(images/terrenos/sueloLVL1.png)");
         $('#espada').attr("src","images/interfaz/espada.png");
         $("div#paredHorizontal").css("background-image", "url(images/pared/paredHorizontalLVL1.png)");
@@ -198,7 +198,7 @@ function container()
         clearInterval(countdownTimer);
         countdownTimer = setInterval(secondPassed, 1000);
         clearInterval(countdownMobs);
-        countdownMobs = setInterval(playMobs, velocidadMobs);
+        //countdownMobs = setInterval(playMobs, velocidadMobs);
 
         if(key!=true)
         {
@@ -786,6 +786,14 @@ function getPuertas(){
         puertas.push(puerta);
     });
     $("#puertaReja").each((i,val) => {
+        let puerta = new Objeto($(val));
+        puertas.push(puerta);
+    });
+    $("#escalera").each((i,val) => {
+        let puerta = new Objeto($(val));
+        puertas.push(puerta);
+    });
+    $("#calavera").each((i,val) => {
         let puerta = new Objeto($(val));
         puertas.push(puerta);
     });

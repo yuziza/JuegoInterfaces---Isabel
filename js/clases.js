@@ -64,7 +64,7 @@ colisionaPorAbajo(tipo) {
     if (tipo == "terreno") {
         let terrenos = getTerrenos();
         terrenos.forEach(val => {
-            if (this.abajo + 10 > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+            if (this.abajo + 5 > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
                 colisiona = true;
             }
         });
@@ -94,7 +94,7 @@ colisionaPorArriba(tipo) {
     if (tipo == "terreno") {
         let terrenos = getTerrenos();
         terrenos.forEach(val => {
-            if (this.abajo > val.arriba && this.arriba - 10 < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+            if (this.abajo > val.arriba && this.arriba - 5 < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
                 colisiona = true;
             }
         });
@@ -166,7 +166,7 @@ colisionaPorDerecha(tipo) {
     if (tipo == "terreno") {
         let terrenos = getTerrenos();
         terrenos.forEach(val => {
-            if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha + 10 > val.izquierda && this.izquierda < val.derecha) {
+            if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha + 5 > val.izquierda && this.izquierda < val.derecha) {
                 colisiona = true;
             }
         });
@@ -196,7 +196,7 @@ colisionaPorIzquierda(tipo) {
     if (tipo == "terreno") {
         let terrenos = getTerrenos();
         terrenos.forEach(val => {
-            if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda - 10 < val.derecha) {
+            if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda - 5 < val.derecha) {
                 colisiona = true;
             }
         });

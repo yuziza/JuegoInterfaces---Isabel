@@ -356,7 +356,7 @@ tr, td{
 	z-index: 10;
 }
 
-/*LVL 2*/
+/*=====================LVL 2=========================*/
 #puertaReja{
 	width: 44px;
 	height: 57px;
@@ -365,6 +365,25 @@ tr, td{
 	background-color: transparent;
 	z-index: 10;
 }
+
+#escalera{
+	width: 44px;
+	height: 110px;
+	background-image: url('../images/obstaculos/NIVEL2/escalera.png');
+	position: absolute;
+	background-color: transparent;
+	z-index: 10;
+}
+
+#calavera{
+	width: 47px;
+	height: 118px;
+	background-image: url('../images/obstaculos/NIVEL2/columnaCalavera.png');
+	position: absolute;
+	background-color: transparent;
+	z-index: 10;
+}
+
 /*==================PUERTAS=======================*/
 #puertaNV0{
 	width: 45px;
