@@ -404,18 +404,90 @@ class Mounstruo {
     }
 
     moverArriba() {
-        this.capa.animate({ top: this.arriba -= 10 }, { duration: 10, queue: false });
+        switch(this.capa.attr("id"))
+        {
+            case "mounstruoMarino":
+            this.capa.css("background-image", "url(images/mounstruos/mounstruoMarinoArriba.gif)");
+            this.capa.css("width", "64px");
+            this.capa.css("height", "71px");
+            break;
+            case "mounstruoDragon":
+            this.capa.css("background-image", "url(images/mounstruos/mounstruoDragonArriba.gif)");
+            this.capa.css("width", "87px");
+            this.capa.css("height", "95px");
+            break;
+            case "mounstruoMuerte":
+            this.capa.css("background-image", "url(images/mounstruos/mounstruoMuerteArriba.gif)");
+            this.capa.css("width", "75px");
+            this.capa.css("height", "85px");
+            break;
+        }  
+        this.capa.animate({ top: this.arriba -= 10 }, { duration: 10, queue: false }); 
         this.actualizaCoordenadas();
     }
     moverAbajo() {
-        this.capa.animate({ top: this.arriba += 10}, { duration: 10, queue: false });
+        switch(this.capa.attr("id"))
+        {
+            case "mounstruoMarino":
+            this.capa.css("background-image", "url(images/mounstruos/mounstruoMarinoAbajo.gif)");
+            this.capa.css("width", "64px");
+            this.capa.css("height", "80px");
+            break;
+            case "mounstruoDragon":
+            this.capa.css("background-image", "url(images/mounstruos/mounstruoDragonAbajo.gif)");
+            this.capa.css("width", "85px");
+            this.capa.css("height", "96px");
+            break;
+            case "mounstruoMuerte":
+            this.capa.css("background-image", "url(images/mounstruos/mounstruoMuerteAbajo.gif)");
+            this.capa.css("width", "75px");
+            this.capa.css("height", "84px");
+            break;
+        }  
+        this.capa.animate({ top: this.arriba += 10}, { duration: 10, queue: false }); 
         this.actualizaCoordenadas();
     }
     moverDerecha() {
+        switch(this.capa.attr("id"))
+        {
+            case "mounstruoMarino":
+            this.capa.css("background-image", "url(images/mounstruos/mounstruoMarinoDerecha.gif)");
+            this.capa.css("width", "59px");
+            this.capa.css("height", "77px");
+            break;
+            case "mounstruoDragon":
+            this.capa.css("background-image", "url(images/mounstruos/mounstruoDragonDerecha.gif)");
+            this.capa.css("width", "96px");
+            this.capa.css("height", "63px");
+            break;
+            case "mounstruoMuerte":
+            this.capa.css("background-image", "url(images/mounstruos/mounstruoMuerteDerecha.gif)");
+            this.capa.css("width", "61px");
+            this.capa.css("height", "81px");
+            break;
+        }  
         this.capa.animate({ left: this.izquierda += 10 }, { duration: 10, queue: false });
         this.actualizaCoordenadas();
     }
     moverIzquierda() {
+        switch(this.capa.attr("id"))
+        {
+            case "mounstruoMarino":
+            this.capa.css("background-image", "url(images/mounstruos/mounstruoMarinoIzquierda.gif)");
+            this.capa.css("width", "59px");
+            this.capa.css("height", "77px");
+            break;
+            case "mounstruoDragon":
+            this.capa.css("background-image", "url(images/mounstruos/mounstruoDragonIzquierda.gif)");
+            this.capa.css("width", "96px");
+            this.capa.css("height", "63px");
+            break;
+            case "mounstruoMuerte":
+            this.capa.css("background-image", "url(images/mounstruos/mounstruoMuerteIzquierda.gif)");
+            this.capa.css("width", "61px");
+            this.capa.css("height", "80px");
+            break;
+        } 
         this.capa.animate({ left: this.izquierda -= 10 }, { duration: 10, queue: false });
         this.actualizaCoordenadas();
     }

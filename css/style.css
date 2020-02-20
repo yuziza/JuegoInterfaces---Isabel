@@ -32,6 +32,11 @@ tr, td{
 	text-align: center;
 }
 
+a{
+	color: white;
+	font-size: 50px;
+}
+
 .eleg{
 	width: 20px;
 	height: 20px;
@@ -129,6 +134,13 @@ tr, td{
 	display: none;
 }
 
+#fuegos{
+	width: 500px;
+	height: 500px;
+	background-image: url('../images/interfaz/fuegos.gif');
+	background-color: transparent;
+}
+
 #mensaje{
 	width: 500px;
 	font-family:"Pixelar Regular W01 Regular";
@@ -189,9 +201,6 @@ tr, td{
 
 .mounstruo{
 	position: absolute;
-	/*box-shadow: 0 0 20px #4f9;
-	background-color: #4f9;
-	border-radius: 50px 50px 10px 10px;*/
 }
 
 #mounstruoMarino{
@@ -298,6 +307,13 @@ tr, td{
 	background-color: transparent;
 }
 
+#puertaNV0{
+	width: 45px;
+	height: 93px;
+	background-image: url('../images/pared/agujero.png');
+	position: absolute;
+}
+
 /*======== LVL 01 =========*/
 #trozotierra{
 	position: absolute; 
@@ -384,13 +400,88 @@ tr, td{
 	z-index: 10;
 }
 
-/*==================PUERTAS=======================*/
-#puertaNV0{
-	width: 45px;
-	height: 93px;
-	background-image: url('../images/pared/agujero.png');
+/*======================NVL3==================*/
+#paredHorizontal2{
+	height: 89px;
+	background-image: url('../images/pared/paredHorizontalLVL3.png');
+	background-repeat: repeat;
+	z-index: 18;
+}
+
+#puertaArbol{
+	width: 145px;
+	height: 144px;
+	background-image: url('../images/obstaculos/NIVEL3/puertafinal.png');
+	position: absolute;
+	background-color: transparent;
+	z-index: 10;
+}
+
+#plantaPuerta{
+	width: 48px;
+	height: 74px;
+	background-image: url('../images/obstaculos/NIVEL3/plantaPuerta.png');
+	position: absolute;
+	background-color: transparent;
+	z-index: 50;
+}
+
+#pRojaFlor{
+	width: 47px;
+	height: 37px;
+	background-image: url('../images/obstaculos/NIVEL3/plantarojaFlor.png');
+	position: absolute;
+	background-color: transparent;
+	z-index: 10;
+	background-repeat: repeat;
+}
+
+#pRojaFin{
+	width: 47px;
+	height: 96px;
+	background-image: url('../images/obstaculos/NIVEL3/plantarojaFin.png');
+	position: absolute;
+	background-color: transparent;
+	background-repeat: repeat;
+	z-index: 10;
+}
+
+#arboles{
+	width: 94px;
+	height: 142px;
+	background-image: url('../images/obstaculos/NIVEL3/arboles.png');
+	position: absolute;
+	background-color: transparent;
+	background-repeat: repeat;
+	z-index: 10;
+}
+
+#arbolesIlusion{
+	width: 94px;
+	height: 142px;
+	background-image: url('../images/obstaculos/NIVEL3/arbolesIlusion.png');
+	position: absolute;
+	background-color: transparent;
+	background-repeat: repeat;
+	z-index: 10;
+}
+
+#entrada{
+	width: 48px;
+	height: 49px;
+	background-image: url('../images/obstaculos/NIVEL3/entrada.png');
+	position: absolute;
+	background-color: transparent;
+}
+
+#puertaFinal{
+	width: 49px;
+	height: 45px;
+	background-image: url('../images/obstaculos/NIVEL3/portal.gif');
 	position: absolute;
 }
+
+/*==================SUELO=======================*/
 
 .suelo {
 	margin: 0;

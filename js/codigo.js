@@ -9,7 +9,7 @@ let suelo;
 let disparo;
 let vida = 4;
 let numeroDisparos=0;
-let nivel=-1;
+let nivel=4;
 let key=false;
 
 //POSICIONES
@@ -73,7 +73,7 @@ function container()
         clearInterval(countdownTimer);
         clearInterval(countdownMobs);
         $(document).prop('title', '¡ENHORABUENA!');
-        $("#container").html("");
+        $("#container").html("<div id='fuegos'></div> <h1>¡Enhorabuena, te has pasado el juego!</h1> <a href='index.html'>VOLVER AL INICIO</a>");
     }
     if(nivel==-2)
     {
@@ -160,24 +160,24 @@ function container()
     if(nivel==3)
     {
         ultimoNVLJugado = 3;
-        enemigosLVL=3;
-        seconds = 120;
+        enemigosLVL=4;
+        seconds = 60;
         puntuacionAlEmpezarNVL = puntuacion;
-        velocidadMobs = 600;
+        velocidadMobs = 400;
         misionDisparo = false;
         misionLlave = false;
         arma=true;
         llave = false;
         exit = false;
         $(document).prop('title', 'NIVEL 3');
-        $("#container").html("");
-        $("#interfaz").css("background-image", "url(images/terrenos/sueloLVL1.png)");
+        $("#container").html("<div id='vidas'> <img id='corazon1'> <img id='corazon2'> <img id='corazon3'> <img id='corazon4'> <img id='espada'> <img id='llave'> </div> <div id='nivel'>NIVEL</div> <div id='puntuacion'>PUNTOS: 0</div> <div id='misiones'> <center><h3>MISIONES</h3></center> <ul> <li id='misionDisparo'>Mata a todos los enemigos</li> <li id='misionLlave'>Encuentra la llave</li> <li id='misionEstrella'>Coge la estrella</li> </ul> </div> <div id='interfaz'> <!-- PAREDES QUE DELIMITAN LA PANTALLA--> <div id='paredHorizontal' class='suelo' style='width: 740px;'></div> <div id='paredHorizontal' class='suelo' style='width: 180px; right: 0px'></div> <div id='paredHorizontal2' class='suelo' style='width: 100%; bottom: 0em;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px;'></div> <div id='paredVerticalRepeat' class='suelo' style='height: 611px; right: 0px;'></div> <!--OBSTACULOS--> <div id='puertaArbol' style='top:-50px; right: 150px;'></div> <div id='pRojaFlor' class='suelo' style='left: 200px; top: 50px; height: 148px;'></div> <div id='pRojaFin' class='suelo' style='left: 200px; top: 195px; width: 188px;'></div> <div id='pRojaFin' class='suelo' style='left: 300px; top: 50px; width: 188px;'></div> <div id='pRojaFlor' class='suelo' style='left: 50px; top: 50px; height: 148px;'></div> <div id='pRojaFin' class='suelo' style='left: 50px; top: 195px;'></div> <div id='arboles' class='suelo' style='bottom: 150px; right: 50px;'></div> <div id='arboles' class='suelo' style='bottom: 150px; right: 130px;'></div> <div id='arboles' class='suelo' style='bottom: 150px; right: 180px;'></div> <div id='arboles' class='suelo' style='bottom: 150px; right: 230px;'></div> <div id='arbolesIlusion' style='bottom: 150px; right: 300px;'></div> <div id='arboles' class='suelo' style='bottom: 150px; right: 370px;'></div> <div id='arboles' class='suelo' style='bottom: 150px; right: 420px;'></div> <div id='arboles' class='suelo' style='bottom: 90px; right: 420px;'></div> <div id='arboles' class='suelo' style='bottom: 40px; right: 420px;'></div> <!--COFRES--> <div id='cofre' style='top:90px; left: 260px;'></div> <!--ESTRELLA--> <div id='estrella' class='estrella' style='right: 80px; bottom: 110px;'></div> <!--CORAZONES--> <!--<div id='corazon' class='corazon' style='top:450px; right: 180px;'></div>--> <!--PUERTAS--> <div id='puertaFinal' class='exit' style='top: 0px; right: 195px;'></div> <div id='plantaPuerta' class='suelo' style='right: 195px; top:20px;'></div> <div id='entrada' style='top: 90px; left: 120px;'></div> </div> <!--PERSONAJE--> <div id='personaje'></div> <!--MOUNSTRUOS--> <div id='mounstruoDragon' class='mounstruo' style='top:300px; right: 650px;'></div> <div id='mounstruoDragon' class='mounstruo' style='bottom:250px; left: 800px;'></div> <div id='mounstruoDragon' class='mounstruo' style='top:500px; left: 600px;'></div> <div id='mounstruoDragon' class='mounstruo' style='top:400px; left: 900px;'></div> <div id='muletas'> <img id='botonArriba' src='images/interfaz/flechaArriba.png'> <img id='botonAbajo' src='images/interfaz/flechaAbajo.png'> <img id='botonDerecha' src='images/interfaz/flechaDerecha.png'> <img id='botonIzquierda' src='images/interfaz/flechaIzquierda.png'> <img id='botonSpace' src='images/interfaz/space.png'> </div> <div id='tiempo'> </div> <div id='mensaje'></div> <div id='moneda'></div>");
+        $("#interfaz").css("background-image", "url(images/terrenos/sueloLVL3.png)");
         $('#espada').attr("src","images/interfaz/espada.png");
-        $("div#paredHorizontal").css("background-image", "url(images/pared/paredHorizontalLVL1.png)");
-        $("div#paredVerticalRepeat").css("background-image","url(images/pared/paredVerticalLVL1.png)");
+        $("div#paredHorizontal").css("background-image", "url(images/pared/paredHorizontalLVL3.png)");
+        $("div#paredVerticalRepeat").css("background-image","url(images/pared/paredVerticalLVL3.png)");
         $("div#paredVerticalRepeat").css("width","48px");
-        $("#personaje").css("top", "210px");
-        $("#personaje").css("left", "980px");
+        $("#personaje").css("top", "250px");
+        $("#personaje").css("left", "598px");
         $("#misionDisparo").css("color","white");     
     }
 
@@ -198,7 +198,7 @@ function container()
         clearInterval(countdownTimer);
         countdownTimer = setInterval(secondPassed, 1000);
         clearInterval(countdownMobs);
-        //countdownMobs = setInterval(playMobs, velocidadMobs);
+        countdownMobs = setInterval(playMobs, velocidadMobs);
 
         if(key!=true)
         {
@@ -613,6 +613,11 @@ function actualizaMisionMobs(){
         misionDisparo=true;
         $("#misionDisparo").css("color","#4f9");
         sumaPuntuacion("mision");
+        if(nivel==3)
+        {
+            $("#cofre").attr('id', 'cofreLlave');
+            $("#cofreLlave").addClass("llave");
+        }
     }
 }
 //NOS PULSA LA PALANCA
@@ -797,6 +802,14 @@ function getPuertas(){
         let puerta = new Objeto($(val));
         puertas.push(puerta);
     });
+    $("#puertaFinal").each((i,val) => {
+        let puerta = new Objeto($(val));
+        puertas.push(puerta);
+    });
+    $("#plantaPuerta").each((i,val) => {
+        let puerta = new Objeto($(val));
+        puertas.push(puerta);
+    });
     return puertas;
 }
 
@@ -904,27 +917,19 @@ function movimientoMobs(mounstruo){
     {
         case 1:
         if(!mounstruo.colisionaPorArriba())
-            {mounstruo.moverArriba();mounstruo.moverArriba();}
-        else
-            mounstruo.moverAbajo();
+            {mounstruo.moverArriba();}
         break;
         case 2:
         if(!mounstruo.colisionaPorAbajo())
             mounstruo.moverAbajo();
-        else
-            mounstruo.moverArriba();
         break;
         case 3:
         if(!mounstruo.colisionaPorDerecha())
             mounstruo.moverDerecha();
-        else
-            mounstruo.moverIzquierda();
         break;
         case 4:
         if(!mounstruo.colisionaPorIzquierda())
-            {mounstruo.moverIzquierda();mounstruo.moverIzquierda();}
-        else
-            mounstruo.moverDerecha();
+            {mounstruo.moverIzquierda();}
         break;
     }
 }
