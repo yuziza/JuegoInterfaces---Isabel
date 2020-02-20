@@ -9,7 +9,7 @@ let suelo;
 let disparo;
 let vida = 4;
 let numeroDisparos=0;
-let nivel=4;
+let nivel=-1;
 let key=false;
 
 //POSICIONES
@@ -72,8 +72,9 @@ function container()
     {
         clearInterval(countdownTimer);
         clearInterval(countdownMobs);
+        puntuacionAlEmpezarNVL = puntuacion;
         $(document).prop('title', '¡ENHORABUENA!');
-        $("#container").html("<div id='fuegos'></div> <h1>¡Enhorabuena, te has pasado el juego!</h1> <a href='index.html'>VOLVER AL INICIO</a>");
+        $("#container").html("<center><img id='fuegos' src='images/interfaz/fuegos.gif'><h1>¡Enhorabuena, te has pasado el juego!</h1><h3>Has acumulado "+puntuacionAlEmpezarNVL+" puntos</h3><a href='index.html'>VOLVER AL INICIO</a></center>");
     }
     if(nivel==-2)
     {

@@ -135,10 +135,8 @@ a{
 }
 
 #fuegos{
-	width: 500px;
-	height: 500px;
-	background-image: url('../images/interfaz/fuegos.gif');
-	background-color: transparent;
+	width: 400px;
+	height: 400px;
 }
 
 #mensaje{
