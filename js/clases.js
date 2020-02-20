@@ -154,10 +154,10 @@ colisionaPorArriba(tipo) {
                 }
                 else
                     if(val.capa.attr("class")=="suelo")
-                    val.capa.remove();
+                        val.capa.remove();
+                }
             }
-        }
-    });
+        });
    }
    return colisiona;
 }
@@ -244,15 +244,15 @@ colisionaPorIzquierda(tipo) {
 moverArriba(tipo) {
     if(sexo==0)
     {
-    this.capa.css("background-image", "url(images/personaje/chicoArriba.gif)");
-    this.capa.css("width", "35px");
-    this.capa.css("height", "47px");
+        this.capa.css("background-image", "url(images/personaje/chicoArriba.gif)");
+        this.capa.css("width", "35px");
+        this.capa.css("height", "47px");
     }
     else
     {
-    this.capa.css("background-image", "url(images/personaje/chicaArriba.gif)");
-    this.capa.css("width", "29px");
-    this.capa.css("height", "45px");
+        this.capa.css("background-image", "url(images/personaje/chicaArriba.gif)");
+        this.capa.css("width", "29px");
+        this.capa.css("height", "45px");
     }
 
     if(tipo==1)
@@ -268,15 +268,15 @@ moverArriba(tipo) {
 moverAbajo(tipo) {
     if(sexo==0)
     {
-    this.capa.css("background-image", "url(images/personaje/chicoAbajo.gif)");
-    this.capa.css("width", "35px");
-    this.capa.css("height", "48px");
+        this.capa.css("background-image", "url(images/personaje/chicoAbajo.gif)");
+        this.capa.css("width", "35px");
+        this.capa.css("height", "48px");
     }
     else
     {
-    this.capa.css("background-image", "url(images/personaje/chicaAbajo.gif)");
-    this.capa.css("width", "29px");
-    this.capa.css("height", "45px");
+        this.capa.css("background-image", "url(images/personaje/chicaAbajo.gif)");
+        this.capa.css("width", "29px");
+        this.capa.css("height", "45px");
     }
 
     if(tipo==1)
@@ -292,15 +292,15 @@ moverAbajo(tipo) {
 moverDerecha(tipo) {
     if(sexo==0)
     {
-    this.capa.css("background-image", "url(images/personaje/chicoDerecha.gif)");
-    this.capa.css("width", "33px");
-    this.capa.css("height", "48px");
+        this.capa.css("background-image", "url(images/personaje/chicoDerecha.gif)");
+        this.capa.css("width", "33px");
+        this.capa.css("height", "48px");
     }
     else
     {
-    this.capa.css("background-image", "url(images/personaje/chicaDerecha.gif)");
-    this.capa.css("width", "30px");
-    this.capa.css("height", "45px");
+        this.capa.css("background-image", "url(images/personaje/chicaDerecha.gif)");
+        this.capa.css("width", "30px");
+        this.capa.css("height", "45px");
     }
 
     if(tipo==1)
@@ -316,15 +316,15 @@ moverDerecha(tipo) {
 moverIzquierda(tipo) {
     if(sexo==0)
     {
-    this.capa.css("background-image", "url(images/personaje/chicoIzquierda.gif)");
-    this.capa.css("width", "33px");
-    this.capa.css("height", "48px");
+        this.capa.css("background-image", "url(images/personaje/chicoIzquierda.gif)");
+        this.capa.css("width", "33px");
+        this.capa.css("height", "48px");
     }
     else
     {
-    this.capa.css("background-image", "url(images/personaje/chicaIzquierda.gif)");
-    this.capa.css("width", "30px");
-    this.capa.css("height", "45px");
+        this.capa.css("background-image", "url(images/personaje/chicaIzquierda.gif)");
+        this.capa.css("width", "30px");
+        this.capa.css("height", "45px");
     }
     
     if(tipo==1)
@@ -496,44 +496,93 @@ class Mounstruo {
         this.abajo = this.arriba + this.altura;
     }
 
-    colisionaPorAbajo() {
+    colisionaPorAbajo(tipo) {
         let colisiona = false;
         let objetos = getObjetos();
-        objetos.forEach(val => {
-           if (this.abajo + 10 > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
-            colisiona = true;
+        let personaje = getPersonaje();
+        if(tipo=="objeto")
+        {
+            objetos.forEach(val => {
+               if (this.abajo + 10 > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+                colisiona = true;
+            }
+        });
         }
-    });
-        return colisiona;
-    }
-    colisionaPorArriba() {
-        let colisiona = false;
-        let objetos = getObjetos();
-        objetos.forEach(val => {
-            if (this.abajo > val.arriba && this.arriba - 10 < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+        if(tipo=="personaje")
+        {
+            personaje.forEach(val => {
+               if (this.abajo + 5 > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
                 colisiona = true;
             }
         });
+        }
         return colisiona;
     }
-    colisionaPorDerecha() {
+    colisionaPorArriba(tipo) {
         let colisiona = false;
         let objetos = getObjetos();
-        objetos.forEach(val => {
-            if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha + 10 > val.izquierda && this.izquierda < val.derecha) {
+        let personaje = getPersonaje();
+        if(tipo=="objeto")
+        {
+            objetos.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba - 10 < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
+                    colisiona = true;
+                }
+            });
+        }
+        if(tipo=="personaje")
+        {
+            personaje.forEach(val => {
+             if (this.abajo > val.arriba && this.arriba - 10 < val.abajo && this.derecha > val.izquierda && this.izquierda < val.derecha) {
                 colisiona = true;
             }
         });
+        }
+
         return colisiona;
     }
-    colisionaPorIzquierda() {
+    colisionaPorDerecha(tipo) {
         let colisiona = false;
         let objetos = getObjetos();
-        objetos.forEach(val => {
-            if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda - 10 < val.derecha) {
-                colisiona = true;
-            }
-        });
+        let personaje = getPersonaje();
+        if(tipo=="objeto")
+        {
+            objetos.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha + 10 > val.izquierda && this.izquierda < val.derecha) {
+                    colisiona = true;
+                }
+            });
+        }
+        if(tipo=="personaje")
+        {
+            personaje.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha + 10 > val.izquierda && this.izquierda < val.derecha) {
+                    colisiona = true;
+                }
+            });
+        }
+        return colisiona;
+    }
+    colisionaPorIzquierda(tipo) {
+        let colisiona = false;
+        let objetos = getObjetos();
+        let personaje = getPersonaje();
+        if(tipo=="objeto")
+        {
+            objetos.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda - 10 < val.derecha) {
+                    colisiona = true;
+                }
+            });
+        }
+        if(tipo=="personaje")
+        {
+            personaje.forEach(val => {
+                if (this.abajo > val.arriba && this.arriba < val.abajo && this.derecha > val.izquierda && this.izquierda - 10 < val.derecha) {
+                    colisiona = true;
+                }
+            });
+        }
         return colisiona;
     }
 }

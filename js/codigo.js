@@ -740,6 +740,16 @@ function getPalancas() {
     return palancas;
 }
 
+//NOS DEVUELVE UN ARRAY DE PERSONAJE
+function getPersonaje() {
+    let personajes = [];
+    $("#personaje").each((i,val) => {
+        let personaje = new Objeto($(val));
+        personajes.push(personaje);
+    });
+    return personajes;
+}
+
 //NOS DEVUELVE UN ARRAY DE TODAS LAS ESTRELLAS
 function getEstrellas() {
     let estrellas = [];
@@ -917,20 +927,40 @@ function movimientoMobs(mounstruo){
     switch(direccion)
     {
         case 1:
-        if(!mounstruo.colisionaPorArriba())
-            {mounstruo.moverArriba();}
+        if(!mounstruo.colisionaPorArriba("objeto"))
+        {
+            if(!mounstruo.colisionaPorArriba("personaje"))
+            {
+                mounstruo.moverArriba();
+            }
+        }
         break;
         case 2:
-        if(!mounstruo.colisionaPorAbajo())
-            mounstruo.moverAbajo();
+        if(!mounstruo.colisionaPorAbajo("objeto"))
+        {
+            if(!mounstruo.colisionaPorAbajo("personaje"))
+            {
+                mounstruo.moverAbajo();
+            }
+        }
         break;
         case 3:
-        if(!mounstruo.colisionaPorDerecha())
-            mounstruo.moverDerecha();
+        if(!mounstruo.colisionaPorDerecha("objeto"))
+        {
+            if(!mounstruo.colisionaPorDerecha("personaje"))
+            {
+                mounstruo.moverDerecha();
+            }
+        }
         break;
         case 4:
-        if(!mounstruo.colisionaPorIzquierda())
-            {mounstruo.moverIzquierda();}
+        if(!mounstruo.colisionaPorIzquierda("objeto"))
+        {
+            if(!mounstruo.colisionaPorIzquierda("personaje"))
+            {
+                mounstruo.moverIzquierda();
+            }
+        }
         break;
     }
 }
