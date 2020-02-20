@@ -63,7 +63,7 @@ a{
 	height: 700px;
 	background-image: url('../images/terrenos/suelo.png');
 	background-repeat: repeat;
-	position: fixed;
+	position: absolute;
 	top:120px;
 	left:25%;
 }
