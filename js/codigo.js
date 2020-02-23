@@ -53,11 +53,20 @@ let misionSalir=false;
 
 $(document).ready(function() {
 
-    container();   
+    container();  
+    $("#chico").click(function(){
+        $("#chico").addClass("seleccionado");
+        $("#chica").removeClass("seleccionado");
+    }); 
+    $("#chica").click(function(){
+        $("#chica").addClass("seleccionado");
+        $("#chico").removeClass("seleccionado");
+    });
+
     $("#botonEleccion").click(function(){iniciar();});
 
     function iniciar(){
-        if(document.getElementById("chico").checked)
+        if($(".seleccionado").attr("id")=="chico")
             sexo=0;
         else
             sexo=1;
@@ -90,7 +99,7 @@ function container()
         clearInterval(countdownTimer);
         clearInterval(countdownMobs);
         $(document).prop('title', 'PRACTICA-5');
-        $("#container").html("<center><h1>BIENVENIDO A PRÁCTICA-5</h1><h2>ESTE JUEGO HA SIDO CREADO POR ISABEL FERNÁNDEZ</h2><h3>ELIGE TU PERSONAJE</h3><form id='frmElegido'><table><tr><td><img src='images/personaje/chicoAvatar.png'></td><td><img src='images/personaje/chicaAvatar.png'></td></tr><tr><td><input class='eleg' type='radio' name='elegido' id='chico' value='CHICO' checked></td><td><input class='eleg' type='radio' name='elegido' id='chica' value='CHICA'></td></tr></table><br><br><input class='botonInsertCoin' type='button' id='botonEleccion' value='INSERT COIN'></form></center>");
+        $("#container").html("<center> <h1>BIENVENIDO A PRÁCTICA-5</h1> <h2>ESTE JUEGO HA SIDO CREADO POR ISABEL FERNÁNDEZ</h2> <h3>ELIGE TU PERSONAJE</h3> <form id='frmElegido'> <table> <tr> <td> <img id='chico' class='seleccionado' src='images/personaje/chicoAvatar.png'> </td> <td> <img id='chica' class=''  src='images/personaje/chicaAvatar.png'> </td> </tr> <!-- <tr> <td> <input class='eleg' type='radio' name='elegido' id='chico' value='CHICO' checked> </td> <td> <input class='eleg' type='radio' name='elegido' id='chica' value='CHICA'> </td> </tr> --> </table> <br> <br> <input class='botonInsertCoin' type='button' id='botonEleccion' value='INSERT COIN'> </form> </center>");
 
     }
     if(nivel==0)
