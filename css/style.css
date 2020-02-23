@@ -154,6 +154,14 @@ a{
 	z-index: 100;
 }
 
+#dialog{
+	background-color: cornsilk;
+	color: black;
+	padding: 20px;
+	font-size: 24px;
+	text-align: center;
+	display: none;
+}
 
 /*================= PERSONAJE PRINCIPAL =================*/
 
@@ -167,8 +175,7 @@ a{
 }
 
 .seleccionado{
-	border: 2px solid red;
-	background-color: red;
+	background-color: yellow;
 }
 
 .disparo{

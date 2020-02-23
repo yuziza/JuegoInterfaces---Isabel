@@ -83,7 +83,12 @@ function container()
         clearInterval(countdownMobs);
         puntuacionAlEmpezarNVL = puntuacion;
         $(document).prop('title', '¡ENHORABUENA!');
-        $("#container").html("<center><img id='fuegos' src='images/interfaz/fuegos.gif'><h1>¡Enhorabuena, te has pasado el juego!</h1><h3>Has acumulado "+puntuacionAlEmpezarNVL+" puntos</h3><a href='index.html'>VOLVER AL INICIO</a></center>");
+        $("#container").html("<center> <img id='fuegos' src='images/interfaz/fuegos.gif'> <h1>¡Enhorabuena, te has pasado el juego!</h1> <h3>Has acumulado "+puntuacionAlEmpezarNVL+" puntos</h3> <a href='index.html'>VOLVER AL INICIO</a> <div id='dialog' title='Máxima puntuación'> <p>¡Enhorabuena!<br> Has conseguido la máxima puntuación</p> </div> </center>");
+        if(puntuacion==1115)
+        {
+            $( "#dialog" ).css("display", "block");
+            $( function() {$( "#dialog" ).dialog();});
+        }
     }
     if(nivel==-2)
     {
