@@ -582,21 +582,25 @@ function comprobarVida(){
         $('#corazon1').attr("src","images/interfaz/corazonlleno.png");
         $('#corazon2').attr("src","images/interfaz/corazonlleno.png");
         $('#corazon3').attr("src","images/interfaz/corazonlleno.png");
+        $( "#corazon4" ).effect( "bounce", "", 500, "" );
         $('#corazon4').attr("src","images/interfaz/corazonvacio.png");
         break;
         case 2:
         $('#corazon1').attr("src","images/interfaz/corazonlleno.png");
         $('#corazon2').attr("src","images/interfaz/corazonlleno.png");
+        $( "#corazon3" ).effect( "bounce", "", 500, "" );
         $('#corazon3').attr("src","images/interfaz/corazonvacio.png");
         $('#corazon4').attr("src","images/interfaz/corazonvacio.png");
         break;
         case 1:
         $('#corazon1').attr("src","images/interfaz/corazonlleno.png");
+        $( "#corazon2" ).effect( "bounce", "", 500, "" );
         $('#corazon2').attr("src","images/interfaz/corazonvacio.png");
         $('#corazon3').attr("src","images/interfaz/corazonvacio.png");
         $('#corazon4').attr("src","images/interfaz/corazonvacio.png");
         break;
         case 0:
+        $( "#corazon1" ).effect( "bounce", "", 500, "" );
         $('#corazon1').attr("src","images/interfaz/corazonvacio.png");
         $('#corazon2').attr("src","images/interfaz/corazonvacio.png");
         $('#corazon3').attr("src","images/interfaz/corazonvacio.png");
@@ -606,6 +610,12 @@ function comprobarVida(){
         break;
     }
 }
+
+function callback() {
+      setTimeout(function() {
+        $( "#personaje" ).removeAttr( "style" ).hide().fadeIn();
+      }, 1000 );
+    };
 
 //ACTUALIZA MISION MOUNSTROUS
 function actualizaMisionMobs(){
