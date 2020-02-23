@@ -15,7 +15,8 @@ Para en movimiento del personaje principal hemos creado en el documento html en 
 
 Crearemos una clase Personaje en clases.js que guarde la capa donde está alojado el personaje, su anchura y altura y sus posiciones.
 
-```class Personaje { // Personaje principal.
+```
+class Personaje { // Personaje principal.
     constructor(capa) {
         this.capa = capa;
         this.izquierda = capa.offset().left;
@@ -36,7 +37,8 @@ Una vez tenemos las dos anteriores, creamos en codigo js el personaje en cuesti�
 
 Para detectar que teclas estamos pulsando, creamos un evento keydown que detecta cuando se pulsa una tecla y guarda su codigo numérico. Posteriormente llamamos al método mueve() mandandole la numeración de tecla recibida.
 
-```$(document).keydown(function(e) {
+```
+$(document).keydown(function(e) {
 t = e.which;
 mueve(t);
 });
@@ -45,7 +47,8 @@ mueve(t);
 
 La función mueve() contendrá un switch que dependiendo de la numeración recibida llamará a la función personaje.moverX() que le corresponda y guardaremos en la variable global ultimaPosicion la dirección a la que accedemos para el apartado PNG de este punto. En esta explicación solo se hablará de la opción 38  (tecla Arriba)  para reducir la demostración de codigo.
 
-```function mueve(t) {
+```
+function mueve(t) {
 switch(t)
   {
      case 37:
@@ -68,7 +71,8 @@ switch(t)
 
 Una vez ha llamado a la función, en este caso se especifica un tipo por lo que veremos en el ejercicio 3, esta función sumara a la dirección escogida (en este caso: top) los pixeles que especifiquemos. Y, finalmente, actualizará las coordenadas con respecto a su tamaño llamando a la funcion actualizaCoordenadas() que tiene la misma clase Personaje.
 
-```moverArriba(tipo) {
+```
+moverArriba(tipo) {
  if(tipo==1)
    {
      this.capa.animate({ top: this.arriba -= 5 }, { duration: 1, queue: false});
@@ -87,7 +91,8 @@ actualizaCoordenadas(movimiento) {
 
 Para cambiar la imagen al moverse nos remitimos de nuevo a la función moverX() que hemos visto anteriormente, en el caso de este juego en particular habrá dos opciones porque se permite elegir sexo al inicio del juego, con una variable global que será 0 si es un chico o 1 si es una chica. Una vez ha comprobado si es chico o chica, cambia la imagen de fondo de la capa a la adecuada y adapta las propiedades css width y height a la altura y anchura de la imagen en concreto.
 
-```moverArriba(tipo) {
+```
+moverArriba(tipo) {
     if(sexo==0)
     {
         this.capa.css("background-image", "url(images/personaje/chicoArriba.gif)");
@@ -108,7 +113,8 @@ Para cambiar la imagen al moverse nos remitimos de nuevo a la función moverX() 
 
 Para cambiar la imagen a PNG una vez que dejamos de pulsar la tecla usamos un evento keyup en el que llamamos a la función detiene() de la clase Personaje.
 
-```$(document).keyup(function(e) {
+```
+$(document).keyup(function(e) {
 personaje.detiene();
 });
 ```
@@ -116,7 +122,8 @@ personaje.detiene();
 
 Esta función tenemos un switch que comprueba la ultima posición que anteriormente hemos proporcionado para saber que imagen PNG debe usar y le cambiará la imagen de fondo que corresponda al div personaje. Aunque no se haya incluido en el código a continuación, tambien comprueba como en el anterior si el sexo es chico o chica.
 
-```detiene(){
+```
+detiene(){
     switch(ultimaPosicion)
     {
       case "arriba":
@@ -137,7 +144,8 @@ Para los puntos recinto cerrado y obstáculos abremos creado un div con posicion
 
 En el interior del div comentado anteriormente se encontraran las paredes que delimitan la pantalla con una class llamada suelo y el id correspondiente al gráfico que queremos poner, que estará especificado en el style.css. Estos se posicionaran con un style propio para cada objeto que especifica la posición de ese objeto.
 
-```<!-- PAREDES QUE DELIMITAN LA PANTALLA--> 
+```
+<!-- PAREDES QUE DELIMITAN LA PANTALLA--> 
 <div id='paredHorizontal' class='suelo' style='width: 100%; top: 0px;'></div> 
 <div id='paredHorizontal' class='suelo' style='width: 100%; bottom: 0px;'></div> 
 <div id='paredVerticalRepeat' class='suelo' style='height: 611px;'></div> 
@@ -149,7 +157,8 @@ En el interior del div comentado anteriormente se encontraran las paredes que de
 
 Para los obstáculos haremos lo mismo, usaremos el id correspondiente al estilo que le hayamos dado a ese id, es decir, a la imagen de fondo que queramos que se vea según que objeto sea y le daremos una class suelo. En la demostración se usa un nuevo estilo width porque el objeto en cuestión tiene la propiedad background-repeat: repeat;
 
-```<!--Obstaculos--> 
+```
+<!--Obstaculos--> 
 <div id='roca1' class='suelo' style='width: 276px ; top: 90px; left: 50px;'></div> 
 <div id='roca1' class='suelo' style='width: 230px ; top: 150px; left: 400px;'></div> 
 <div id='roca1' class='suelo' style='width: 184px ; top: 260px; left: 110px;'></div>
@@ -158,7 +167,8 @@ Para los obstáculos haremos lo mismo, usaremos el id correspondiente al estilo 
 
 Para controlar las colisiones del personaje con obstaculos volvemos a ver la función mueve(), en este caso seguiremos con la tecla 38 (Arriba) para facilitar la comprensión lectora. La condición que controlará si choca o no con un obstaculo es si no colisiona con este. En este ejemplo veremos que usa un if not colisiona con argumento “terreno”, la función colisiona está definida en la clase Personaje.
 
-```case 38:
+```
+case 38:
    if (!personaje.colisionaPorArriba("terreno")) 
    {               
       personaje.moverArriba(1);                         
@@ -169,7 +179,8 @@ break;
 
 En esta función se crea una variable falsa que solo se volverá verdadera si al obtener todos los terrenos (Ahora hablaremos de la función getTerrenos) y comprobar su posición, esta no colisiona con la del personaje más los pixeles de movimiento indicados. Una vez hecha la comprobación devuelve verdadero o falso según corresponda.
 
-```colisionaPorArriba(tipo) {
+```
+colisionaPorArriba(tipo) {
     let colisiona = false;
     if (tipo == "terreno") {
         let terrenos = getTerrenos();
@@ -187,7 +198,8 @@ return colisiona;
 
 Para obtener todos los terrenos el archivo codigo.js tiene una función llamada getTerrenos() que devuelve un array con todos los objetos que tienen la clase suelo.
 
-```function getTerrenos() {
+```
+function getTerrenos() {
     let terrenos = [];
     $(".suelo").each((i,val) => {
         let terreno = new Objeto($(val));
@@ -206,7 +218,8 @@ Para el movimiento aleatorio de mobs es necesario primero crear una clase Mounst
 
 Una vez tenemos el array de mounstruos en pantalla, dependiendo del nivel (en esta demostración de codigo solo se mostrarán los niveles 0 y 1) tendremos una variable que habremos modificado dependiendo del nivel en el que diremos cuántos monstruos hay en ese nivel y 4 variables mounstroX que alojaran esos objetos. De haber solo uno, solo la variable monstruo1 será usada.
 
-```function crearMobs(){
+```
+function crearMobs(){
     let mounstruos = getMonstruos();
     for(let i=0;i<enemigosLVL;i++)
     {
@@ -225,7 +238,8 @@ Una vez tenemos el array de mounstruos en pantalla, dependiendo del nivel (en es
 
 De nuevo en la función container(), después de haber creado los Mobs, se limpiará primero el intervalo countdownMobs y se volverá a llamar con un setInterval que incluirá la función playMobs() con la velocidad que pertenece al nivel. (Lo veremos más adelante)
 
-```function container()
+```
+function container()
 {
    clearInterval(countdownMobs);
    countdownMobs = setInterval(playMobs, velocidadMobs);
@@ -235,7 +249,8 @@ De nuevo en la función container(), después de haber creado los Mobs, se limpi
 
 La función playMobs() llamará a la función movimientoMobs() de tantos mounstruos como haya en el nivel en el que estemos. En este caso solo mostramos el codigo del nivel 0 y 1. Esta función se llamará infinitas veces hasta que volvamos a limpiar el intervalo con clearInterval(countdownMobs)
 
-```function playMobs(){
+```
+function playMobs(){
     movimientoMobs(mounstruo1);
     if(nivel>=1)
     {
@@ -251,7 +266,8 @@ Esta función se hará tantas veces como mounstruos haya en pantalla, como hemos
 
 En este ejemplo de código, una vez más, solo se muestra una dirección para la facilidad de lectura.
 
-```function movimientoMobs(mounstruo){
+```
+function movimientoMobs(mounstruo){
     var direccion = Math.round(Math.random() * 4);
     switch(direccion)
     {
@@ -273,7 +289,8 @@ En este ejemplo de código, una vez más, solo se muestra una dirección para la
 
 La velocidad se indicará en la variable velocidadMobs cada vez que se inicie un nivel nuevo.
 
-```function container()
+```
+function container()
 {
     if(nivel==0)
     {
@@ -294,7 +311,8 @@ La pérdida de vida de un personaje se hará si el personaje si colisiona con un
 
 Posteriormente, comprobará la vida del personaje para hacer el apartado que viene a continuación.
 
-```case 38:
+```
+case 38:
      if (!personaje.colisionaPorArriba("mounstruo"))
      {
          personaje.moverArriba(1);
@@ -312,7 +330,8 @@ break;
 
 Una vez se ha restado la vida y se ha llamado a la función comprobarVida(), esta usará switch para cambiar la imagen del elemento img que tiene las id’s corazon1, 2, 3 y 4. Cambiando estas imagenes por un corazon lleno o un corazón vacío. En el caso de que la vida sea 0, cambiará la pantalla a GAME OVER.
 
-```function comprobarVida(){
+```
+function comprobarVida(){
     switch(vida)
     {
         case 4:
@@ -356,7 +375,8 @@ Una vez se ha restado la vida y se ha llamado a la función comprobarVida(), est
 
 La puntuación se controla con la función sumaPuntuación(tipo) en la que tipo sería el evento que hace que sume puntos. En concreto en nuestro juego hay 3 formas de ganar puntos a lo largo del nivel. Matando monstruos (mob), cumpliendo misiones (mision) y cogiendo las estrellas (estrella).  En cada una de ellas se sumaría la puntuación correspondiente a la que ya tenemos y se mostraría en el div con id puntuacion. Como animación extra, se cambiaría de posición el div con id moneda, que muestra el gif de una monedita, encima de nuestro personaje y cambiaría el display de none a block y con un contador de tiempo de nuevo a none.
 
-```function sumaPuntuacion(tipo){
+```
+function sumaPuntuacion(tipo){
     if(tipo == "mob")
     {
         puntuacion+= 25;
@@ -395,7 +415,8 @@ En el codigo html el arma se consigue en un cofre con id cofreArma y clase arma.
 
 De nuevo en la funcion mueve() se comprueba si colisiona con un objeto tipo arma, que hará un getArmas() a los objetos con clase arma. Si colisiona con uno de estos y no tiene ya el arma, es decir, la variable arma es falsa, se llamará a la función ponerArma().
 
-```case 38:
+```
+case 38:
    if (!personaje.colisionaPorArriba("arma"))
    {
       personaje.moverArriba(1);
@@ -405,11 +426,12 @@ De nuevo en la funcion mueve() se comprueba si colisiona con un objeto tipo arma
       if(!arma)
          ponerArma();
    }
-   ```
+```
 
 Esta función cambiará la variable arma de false a true, cambiará la imagen de fondo del cofre por una de un cofre abierto, añadirá al div de la interfaz con id espada la imagen del arma, y mostrará un mensaje en el div con id mensaje durante un corto periodo de tiempo para avisar al jugador que ha encontrado el arma.
 
-```function ponerArma()
+```
+function ponerArma()
 {
     arma=true;
     $('#cofreArma').css("background-image", "url(images/obstaculos/cofreAbierto.png)");
@@ -430,7 +452,8 @@ Esto llamará a la función de la clase personaje crearDisparo() con la ultima p
 
 Una vez la función crearDisparo() explicada más adelante se ejecuta, vuelve a mirar la ultima posición y mientras el disparo no colisione con ningún terreno o enemigo, se mueve con la función mueveX() de la clase disparo hacia la ultima posición hasta que choca con alguno.
 
-```case 32: 
+```
+case 32: 
   if(arma == true && numeroDisparos==0)
   {
       numeroDisparos++;
@@ -462,7 +485,8 @@ Una vez la función crearDisparo() explicada más adelante se ejecuta, vuelve a 
 
 La función crearDisparo() mirará la ultima posición del personaje y situará al lado del personaje un div con id disparoX (Donde x es el numero de disparo)
 
-```crearDisparo(ultimaPosicion,nro)
+```
+crearDisparo(ultimaPosicion,nro)
 {
     switch(ultimaPosicion)
     {
@@ -478,7 +502,8 @@ La función crearDisparo() mirará la ultima posición del personaje y situará 
 
 La función mueveX() de la clase disparo es igual que la de personaje, solo que el movimiento es más grande que el del personaje con una diferencia de 5px.
 
-```class Disparo { 
+```
+class Disparo { 
     constructor(capa) {
         this.capa = capa;
         this.izquierda = capa.offset().left;
@@ -501,7 +526,8 @@ La función mueveX() de la clase disparo es igual que la de personaje, solo que 
 
 Si la función colisionaX() de la clase disparo devuelve true, colisiona con un mounstruo y la variable colisionaMonstruo se pone a true, suma la puntuación por matarlo, se ejecuta un setTimeout que borra el div disparo creado en un tiempo y resta uno a la cantidad de monstruos del nivel.
 
-```colisionaMonstruo = true;
+```
+colisionaMonstruo = true;
 sumaPuntuacion("mob");
 setTimeout(function() {$("#disparo"+numeroDisparos).remove();}, 300);
 enemigosLVL--;
@@ -510,7 +536,8 @@ enemigosLVL--;
 
 En la función colisionaX() de la clase disparo, que es practicamente igual que la de personaje, devolvería true si colisiona y hace un setTimeout que elimina la capa del monstruo con el que colisiona tras un tiempo.
 
-```if (tipo == "mounstruo") {
+```
+if (tipo == "mounstruo") {
      let mounstruos = getMonstruos();
      mounstruos.forEach(val => {
         if (this.abajo > val.arriba && this.arriba - 10 < val.abajo && this.derecha > 
@@ -525,7 +552,8 @@ En la función colisionaX() de la clase disparo, que es practicamente igual que 
 
 Es exactamente igual a la anterior, solo que si colisiona con un terreno lo que se volvería true sería la variable colisionaTerreno y el disparo desaparecía en el tiempo estipulado.
 
-```colisionaTerreno = true;
+```
+colisionaTerreno = true;
 setTimeout(function() {$("#disparo"+numeroDisparos).remove();}, 300);
 ```
 *codigo.js lineas 437-568*
@@ -536,7 +564,8 @@ setTimeout(function() {$("#disparo"+numeroDisparos).remove();}, 300);
 
 Cuando un personaje colisiona con un objeto cofreLlave y aún no se ha conseguido la llave, es decir, la variable llave aún es false, entra en la función consigueLlave() que pone la variable llave a true, y dependiendo de la posición del personaje, detecta si el cofre miraba abajo o a la derecha, y cambia su imagen a uno abierto. Se volvería visible la imagen de la llave en la interfaz y se mostraría un mensaje informando al usuario de que ha conseguido la llave durante un periodo de tiempo.
 
-```function consigueLlave(){
+```
+function consigueLlave(){
   llave=true;
   if(ultimaPosicion=="arriba")
   {
@@ -556,7 +585,8 @@ Cuando un personaje colisiona con un objeto cofreLlave y aún no se ha conseguid
 
 Cuando se ha conseguido la llave, desde la clase personaje la variable exit se ha puesto en true, por lo tanto si ya se tiene la llave y se colisionaX() con la puertaEspecial, se sumara 150 a la puntuación, se sumará 1 a un nivel y se reiniciará la pantalla llamando a la función container() con el nuevo nivel adquirido.
 
-```   if(exit)
+```   
+if(exit)
    {
       puntuacion+=150;
       nivel++;
@@ -567,14 +597,16 @@ Cuando se ha conseguido la llave, desde la clase personaje la variable exit se h
 
 Cuando la página se carga y los niveles son jugables, es decir, son 0, 1, 2 o 3, se limpia el posible intervalo existente y se ejecuta otro que llama a la función secondPassed()
 
-```clearInterval(countdownTimer);
+```
+clearInterval(countdownTimer);
 countdownTimer = setInterval(secondPassed, 1000);
 ```
 *codigo.js lineas 199-200*
 
 La función secondPassed() calcula el numero de minutos, los segundos que se dice exactamente cuantos son en cada nivel en la variable seconds y muestra el tiempo restante de nivel. Una vez los segundos llegan a cero, se limpiará el intervalo, se quitará una vida y se iniciará el nivel con la puntuación que se tenía al empezar el nivel.
 
-```function secondPassed() {
+```
+function secondPassed() {
 
   var minutes = Math.round((seconds - 30)/60); //calcula el número de minutos
   var remainingSeconds = seconds % 60; //calcula los segundos
@@ -611,7 +643,8 @@ Esta función de JQuery hace un efecto bounce (movimiento rebote) sobre el coraz
 
 Esta función se ejecuta si la puntuación conseguida es la máxima por conseguir, dando la enhorabuena con un dialog que se puede cerrar al usuario por haber llegado a la puntuación máxima.
 
-```if(puntuacion==1115)
+```
+if(puntuacion==1115)
         {
             $( "#dialog" ).css("display", "block");
             $( function() {$( "#dialog" ).dialog();});
@@ -623,7 +656,8 @@ Esta función se ejecuta si la puntuación conseguida es la máxima por consegui
 
 Esta función cambia el color de fondo y el borde del personaje inicial seleccionado, añadiendole la clase .seleccionado y teniendola en cuenta posteriormente para el script del personaje.
 
-```$(document).ready(function() {
+```
+$(document).ready(function() {
     container();  
     $("#chico").click(function(){
         $("#chico").addClass("seleccionado");
